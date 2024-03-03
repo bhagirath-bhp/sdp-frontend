@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FormProps } from "../interfaces";
+import { FormProps } from "../../interfaces";
 import { Button } from "@material-tailwind/react";
 
 import Cookies from "js-cookie";
@@ -7,8 +7,8 @@ import Cookies from "js-cookie";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
-import { toUrlEncoded } from "../utils";
-import { useSignInMutation, useSignUpMutation } from "../api/user";
+import { toUrlEncoded } from "../../utils";
+import { useSignInMutation, useSignUpMutation } from "../../api/user";
 
 const AnyForm: React.FC<FormProps> = ({ fields, formType }) => {
   const [form, setForm] = useState<{ [key: string]: string | File }>({});

@@ -1,26 +1,15 @@
 import { Link } from "react-router-dom";
-import AnyForm from "../../components/AnyForm";
+import AnyForm from "../../components/bhp/AnyForm";
+// import "../../bhp.css"
 
-const SignUpPage = () => {
+const SignInPage = () => {
   const fields = [
-    {
-      label: "Name",
-      type: "text",
-      className: "",
-      value: "",
-    },
     {
       label: "Email",
       type: "email",
       className: "",
       value: "",
       onChange: (value: string) => console.log("Email:", value),
-    },
-    {
-      label: "Image",
-      type: "file",
-      className: "",
-      value: "",
     },
     {
       label: "Password",
@@ -32,16 +21,16 @@ const SignUpPage = () => {
   ];
   return (
     <div className="flex flex-col justify-center items-center">
-      <h1 className="title">Sign Up</h1>
-      <AnyForm fields={fields} formType="signup" />
+      <h1 className="title">Sign In</h1>
+      <AnyForm fields={fields} formType="signin"/>
       <p className="my-5">
-        Signed Up Already? &nbsp;
-        <Link to="/signin" className="text-blue underline">
-          SignIn
+        Not Signed Up Yet? &nbsp;
+        <Link to="/signup" className="text-blue underline">
+          SignUp
         </Link>
       </p>
     </div>
   );
 };
 
-export default SignUpPage;
+export default SignInPage;

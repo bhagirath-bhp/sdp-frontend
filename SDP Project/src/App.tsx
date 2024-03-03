@@ -9,9 +9,6 @@ import Login from "./pages/login/Login";
 import "./styles/global.scss";
 import User from "./pages/user/User";
 import Product from "./pages/product/Product";
-import SignInPage from "./pages/bhp/SignInPage";
-import SignUpPage from "./pages/bhp/SignUpPage";
-
 import {
   QueryClient,
   QueryClientProvider,
@@ -64,14 +61,6 @@ function App() {
         {
           path: "/products/:id",
           element: <Product />,
-        },
-        {
-          path: "/signup",
-          element: <SignUpPage />,
-        },
-        {
-          path: "/signin",
-          element: <SignInPage />,
         },
       ],
     },
