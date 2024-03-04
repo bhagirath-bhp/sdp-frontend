@@ -71,7 +71,8 @@ const AnyForm: React.FC<FormProps> = ({ fields, formType }) => {
             theme: "light",
           });
           setTimeout(() => {
-            navigate("/");
+            window.location.replace("/")
+            // navigate("/");
           }, 1000);
         } else {
           const { message } = response;
@@ -88,13 +89,13 @@ const AnyForm: React.FC<FormProps> = ({ fields, formType }) => {
 
   return (
     <>
-      <form className="form" onSubmit={handleSubmit}>
+      <form className="bhp-form" onSubmit={handleSubmit}>
         {fields.map((field, index) => (
-          <div key={index} className="form-input-container">
+          <div key={index} className="bhp-form-input-container">
             <label>{field.label}</label>
             {field.type === "file" ? (
               <input
-                className={`form-input ${field.className}`}
+                className={`bhp-form-input ${field.className}`}
                 type={field.type}
                 onChange={(e) => {
                   const files = e.target.files;
@@ -111,7 +112,7 @@ const AnyForm: React.FC<FormProps> = ({ fields, formType }) => {
               />
             ) : (
               <input
-                className={`form-input ${field.className}`}
+                className={`bhp-form-input ${field.className}`}
                 type={field.type}
                 onChange={(e) => handleFormChange(field.label, e.target.value)}
               />
@@ -122,7 +123,7 @@ const AnyForm: React.FC<FormProps> = ({ fields, formType }) => {
           variant="filled"
           type="submit"
           loading={isLoading}
-          className="text-sm"
+          className="bhp-form-btn"
           color="green"
           fullWidth={true}
           placeholder="Submit"

@@ -13,7 +13,7 @@ export const useSignUpMutation = () => {
 };
 export const useSignInMutation = () => {
   return useMutation(async (formData: BodyInit) => {
-    console.log(formData)
+    console.log(formData);
     const response = await fetch(`${uri}/user/signin`, {
       method: "POST",
       body: formData,

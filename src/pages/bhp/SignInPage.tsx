@@ -21,7 +21,7 @@ const SignInPage = () => {
   ];
   return (
     <div className="flex flex-col justify-center items-center">
-      <h1 className="title">Sign In</h1>
+      <h1 className="bhp-title">Sign In</h1>
       <AnyForm fields={fields} formType="signin"/>
       <p className="my-5">
         Not Signed Up Yet? &nbsp;

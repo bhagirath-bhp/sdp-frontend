@@ -1,3 +1,5 @@
+import Cookies from "js-cookie";
+
 export const menu = [
   {
     id: 1,
@@ -95,6 +97,49 @@ export const menu = [
       },
     ],
   },
+  {
+    id: 6,
+    title: "User",
+    listItems: [
+      {
+        id: 1,
+        title: "Sign Up",
+        url: "/signup",
+        icon: "chart.svg",
+      },
+      {
+        id: 2,
+        title: "Sign In",
+        url: "/signin",
+        icon: "log.svg",
+      },
+      {
+        id: 3,
+        title: "Profile",
+        url: "/signup",
+        icon: "chart.svg",
+      },
+      {
+        id: 4,
+        title: "Orders",
+        url: "/signin",
+        icon: "log.svg",
+      },
+      {
+        id: 5,
+        title: "Collections",
+        url: "/signin",
+        icon: "log.svg",
+      },
+      {
+        id: 6,
+        title: "Sign Out",
+        url: "/",
+        onClickFn: ()=>{Cookies.remove("user"); window.location.reload();},
+        icon: "log.svg",
+      },
+    ],
+  },
 ];
 
 export const topDealUsers = [
@@ -143,28 +188,28 @@ export const topDealUsers = [
     amount: "1560",
   },
   {
-    id: 7,
+    id: 8,
     // img: "https://images.pexels.com/photos/874158/pexels-photo-874158.jpeg?auto=compress&cs=tinysrgb&w=1600",
     username: "Sample Data",
     email: "angel@gmail.com",
     amount: "1560",
   },
   {
-    id: 7,
+    id: 9,
     // img: "https://images.pexels.com/photos/874158/pexels-photo-874158.jpeg?auto=compress&cs=tinysrgb&w=1600",
     username: "Sample Data",
     email: "angel@gmail.com",
     amount: "1560",
   },
   {
-    id: 7,
+    id: 10,
     // img: "https://images.pexels.com/photos/874158/pexels-photo-874158.jpeg?auto=compress&cs=tinysrgb&w=1600",
     username: "Sample Data",
     email: "angel@gmail.com",
     amount: "1560",
   },
   {
-    id: 7,
+    id: 11,
     // img: "https://images.pexels.com/photos/874158/pexels-photo-874158.jpeg?auto=compress&cs=tinysrgb&w=1600",
     username: "Sample Data",
     email: "angel@gmail.com",
