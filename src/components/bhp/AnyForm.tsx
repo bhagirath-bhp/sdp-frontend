@@ -17,8 +17,6 @@ const AnyForm: React.FC<FormProps> = ({ fields, formType }) => {
   const signup = useSignUpMutation();
   const navigate = useNavigate();
 
-
-
   const handleFormChange = (key: string, value: string | File) => {
     setForm((prevform) => ({
       ...prevform,
@@ -37,7 +35,7 @@ const AnyForm: React.FC<FormProps> = ({ fields, formType }) => {
     }
     if (formType === "signup") {
       setTimeout(async () => {
-        const response = await signup.mutateAsync(formData)
+        const response = await signup.mutateAsync(formData);
         if ("success" in response) {
           setIsLoading(false);
           Cookies.set("user", JSON.stringify(response));
@@ -60,8 +58,8 @@ const AnyForm: React.FC<FormProps> = ({ fields, formType }) => {
         }
       }, 1000);
     } else if (formType === "signin") {
-      setTimeout( async () => {
-        const response = await signin.mutateAsync(toUrlEncoded(form))
+      setTimeout(async () => {
+        const response = await signin.mutateAsync(toUrlEncoded(form));
         if ("success" in response) {
           setIsLoading(false);
           Cookies.set("user", JSON.stringify(response));
@@ -71,7 +69,7 @@ const AnyForm: React.FC<FormProps> = ({ fields, formType }) => {
             theme: "light",
           });
           setTimeout(() => {
-            window.location.replace("/")
+            window.location.replace("/");
             // navigate("/");
           }, 1000);
         } else {

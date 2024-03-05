@@ -1,4 +1,4 @@
-import { useMutation } from '@tanstack/react-query';
+import { useMutation } from "@tanstack/react-query";
 
 const uri = import.meta.env.VITE_APP_URI;
 
@@ -18,7 +18,7 @@ export const useSignInMutation = () => {
       method: "POST",
       body: formData,
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        "Content-Type": "application/x-www-form-urlencoded",
       },
     });
     return response.json();

@@ -135,8 +135,11 @@ export const menu = [
         id: 6,
         title: "Sign Out",
         url: "/",
-        onClickFn: ()=>{Cookies.remove("user"); window.location.reload();},
-        icon: "log.svg",
+        onClickFn: () => {
+          Cookies.remove("user");
+          window.location.reload();
+        },
+        icon: "close.png",
       },
     ],
   },
@@ -605,8 +608,6 @@ export const products = [
   },
 ];
 
-
-
 export const singleUser = {
   id: 1,
   title: "Impeto Technologies",
@@ -661,7 +662,7 @@ export const singleUser = {
       },
     ],
   },
-}
+};
 export const singleProduct = {
   id: 1,
   title: "Playstation 5 Digital Edition",
@@ -715,5 +716,5 @@ export const singleProduct = {
         orders: 4300,
       },
     ],
-  }
+  },
 };
