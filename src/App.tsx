@@ -23,7 +23,7 @@ const queryClient = new QueryClient();
 function App() {
   const Layout = () => {
     return (
-      <div className="main">
+      <div className="main relative">
         <Navbar />
         <div className="container">
           <div className="menuContainer">

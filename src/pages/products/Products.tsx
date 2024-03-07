@@ -43,7 +43,7 @@ const columns: GridColDef[] = [
     field: "createdAt",
     headerName: "Created At",
     width: 200,
-    type: "string",
+    type: "date",
   },
   {
     field: "inStock",
@@ -67,21 +67,23 @@ const Products = () => {
   // });
 
   return (
-    <div className="products">
-      <div className="info">
-        <h1>Products</h1>
-        <button onClick={() => setOpen(true)}>Add New Products</button>
-      </div>
-      <DataTable slug="products" columns={columns} rows={products} />
-      {/* TEST THE API */}
+    <>
+      <div className="products">
+        <div className="info">
+          <h1>Products</h1>
+          <button onClick={() => setOpen(true)}>Add New Products</button>
+        </div>
+        <DataTable slug="products" columns={columns} rows={products} />
+        {/* TEST THE API */}
 
-      {/* {isLoading ? (
+        {/* {isLoading ? (
         "Loading..."
       ) : (
         <DataTable slug="products" columns={columns} rows={data} />
       )} */}
-      {open && <Add slug="product" columns={columns} setOpen={setOpen} />}
-    </div>
+        {open && <Add slug="product" columns={columns} setOpen={setOpen} />}
+      </div>
+    </>
   );
 };
 

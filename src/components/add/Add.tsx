@@ -1,6 +1,9 @@
+import { useState } from "react";
 import { GridColDef } from "@mui/x-data-grid";
 import "./add.scss";
-// import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { ToastContainer, toast } from "react-toastify";
+import { toUrlEncoded } from "../../utils";
+import { addClientMutation, getClientsMutation } from "../../api/client";
 
 type Props = {
   slug: string;
@@ -9,63 +12,74 @@ type Props = {
 };
 
 const Add = (props: Props) => {
+  const [form, setForm] = useState<{ [key: string]: string | Date }>({});
+  const addClient = addClientMutation();
 
-  // TEST THE API
-
-  // const queryClient = useQueryClient();
-
-  // const mutation = useMutation({
-  //   mutationFn: () => {
-  //     return fetch(`http://localhost:8800/api/${props.slug}s`, {
-  //       method: "post",
-  //       headers: {
-  //         Accept: "application/json",
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         id: 111,
-  //         img: "",
-  //         lastName: "Hello",
-  //         firstName: "Test",
-  //         email: "testme@gmail.com",
-  //         phone: "123 456 789",
-  //         createdAt: "01.02.2023",
-  //         verified: true,
-  //       }),
-  //     });
-  //   },
-  //   onSuccess: () => {
-  //     queryClient.invalidateQueries([`all${props.slug}s`]);
-  //   },
-  // });
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    //add new item
-    // mutation.mutate();
-    props.setOpen(false)
+  const handleFormChange = (key: string, value: string | Date) => {
+    setForm((prevForm) => ({
+      ...prevForm,
+      [key]: value,
+    }));
   };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(props.slug);
+    if (props.slug === "client") {
+      console.log(form);
+      setTimeout(async () => {
+        if (form) {
+          const response = await addClient.mutateAsync(toUrlEncoded(form), ); // Call mutateAsync
+          console.log(response);
+          if ("success" in response) {
+            toast.success("Signed in successfully!", {
+              position: "top-right",
+              autoClose: 1000,
+              theme: "light",
+            });
+          }
+        } else {
+          const { message } = response;
+          toast.error(message, {
+            position: "top-right",
+            autoClose: 1200,
+            theme: "light",
+          });
+        }
+        props.setOpen(false);
+      }, 1000);
+    }
+  };
+
   return (
-    <div className="add">
-      <div className="modal">
-        <span className="close" onClick={() => props.setOpen(false)}>
-          X
-        </span>
-        <h1>Add new {props.slug}</h1>
-        <form onSubmit={handleSubmit}>
-          {props.columns
-            .filter((item) => item.field !== "id" && item.field !== "img")
-            .map((column) => (
-              <div className="item">
-                <label>{column.headerName}</label>
-                <input type={column.type} placeholder={column.field} />
-              </div>
-            ))}
-          <button>Send</button>
-        </form>
+    <>
+      <div className="add">
+        <ToastContainer position="top-right" autoClose={1000} theme="light" />
+        <div className="modal">
+          <span className="close" onClick={() => props.setOpen(false)}>
+            X
+          </span>
+          <h1>Add new {props.slug}</h1>
+          <form onSubmit={handleSubmit}>
+            {props.columns
+              .filter((item) => item.field !== "id" && item.field !== "img")
+              .map((column) => (
+                <div className="item" key={column.field}>
+                  <label>{column.headerName}</label>
+                  <input
+                    type={column.type}
+                    placeholder={column.headerName}
+                    onChange={(e) =>
+                      handleFormChange(column.field, e.target.value)
+                    }
+                  />
+                </div>
+              ))}
+            <button className="button">Send</button>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

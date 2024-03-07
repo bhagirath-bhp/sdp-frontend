@@ -2,7 +2,7 @@
 
 .add {
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   position: absolute;
   top: 0;
   left: 0;
@@ -50,7 +50,7 @@
         input {
           padding: 10px;
           background-color: transparent;
-          color: white;
+          // color: white;
           outline: none;
           border: 1px solid $soft-color;
           border-radius: 3px;

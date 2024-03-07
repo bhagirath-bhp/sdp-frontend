@@ -24,6 +24,11 @@ export interface SuccessResponse {
   };
 }
 
+export interface PaginationInterface{
+  pageNo: number,
+  pageSize: number
+}
+
 export interface ErrorResponse {
   error: {
     data: {
@@ -35,4 +40,12 @@ export interface ErrorResponse {
 
 export interface UserState {
   // Define initial user state here
+}
+export interface clientState{
+  fname: string,
+  lname: string,
+  email: string,
+  phone: number,
+  createdAt: boolean,
+  verified: boolean
 }

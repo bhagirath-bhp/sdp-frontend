@@ -5,6 +5,11 @@ import {
 } from "@mui/x-data-grid";
 import "./dataTable.scss";
 import { Link } from "react-router-dom";
+import { getClientsMutation } from "../../api/client";
+import { useEffect, useState } from "react";
+import { PaginationInterface } from "../../interfaces";
+import { toUrlEncoded } from "../../utils";
+
 // import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 type Props = {
@@ -14,20 +19,20 @@ type Props = {
 };
 
 const DataTable = (props: Props) => {
+  const getClients = getClientsMutation();
+  const [pagination, setPagination] = useState<PaginationInterface>({pageNo: 0, pageSize: 10})
+  const [clients, setClients] = useState([]);
 
-  // TEST THE API
+  useEffect(()=>{
+    const fetchClients = async () => {
+      // const response = await getClients.mutateAsync(toUrlEncoded(pagination));
+      const response = await getClients.mutateAsync();
+      console.log(response)
+      setClients(response)
+    }
+    fetchClients();
+  }, [])
 
-  // const queryClient = useQueryClient();
-  // // const mutation = useMutation({
-  // //   mutationFn: (id: number) => {
-  // //     return fetch(`http://localhost:8800/api/${props.slug}/${id}`, {
-  // //       method: "delete",
-  // //     });
-  // //   },
-  // //   onSuccess: ()=>{
-  // //     queryClient.invalidateQueries([`all${props.slug}`]);
-  // //   }
-  // // });
 
   const handleDelete = (id: number) => {
     //delete the item
@@ -56,7 +61,8 @@ const DataTable = (props: Props) => {
     <div className="dataTable">
       <DataGrid
         className="dataGrid"
-        rows={props.rows}
+        // rows={props.rows}
+        rows={clients}
         columns={[...props.columns, actionColumn]}
         initialState={{
           pagination: {

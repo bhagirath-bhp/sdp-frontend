@@ -17,13 +17,13 @@ const columns: GridColDef[] = [
   //   },
   // },
   {
-    field: "firstName",
+    field: "fname",
     type: "string",
     headerName: "First name",
     width: 150,
   },
   {
-    field: "lastName",
+    field: "lname",
     type: "string",
     headerName: "Last name",
     width: 150,
@@ -44,7 +44,8 @@ const columns: GridColDef[] = [
     field: "createdAt",
     headerName: "Created At",
     width: 200,
-    type: "string",
+    type: "date",
+    valueFormatter: params => new Date(params?.value).toLocaleString()
   },
   {
     field: "verified",
@@ -73,7 +74,7 @@ const Users = () => {
         <h1>Clients</h1>
         <button onClick={() => setOpen(true)}>Add New Client</button>
       </div>
-      <DataTable slug="users" columns={columns} rows={userRows} />
+      <DataTable slug="clients" columns={columns} rows={userRows} />
       {/* TEST THE API */}
 
       {/* {isLoading ? (
@@ -81,7 +82,7 @@ const Users = () => {
       ) : (
         <DataTable slug="users" columns={columns} rows={data} />
       )} */}
-      {open && <Add slug="user" columns={columns} setOpen={setOpen} />}
+      {open && <Add slug="client" columns={columns} setOpen={setOpen} />}
     </div>
   );
 };
