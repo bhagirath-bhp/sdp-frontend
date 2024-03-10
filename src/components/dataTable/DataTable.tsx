@@ -9,6 +9,7 @@ import { getClientsMutation } from "../../api/client";
 import { useEffect, useState } from "react";
 import { PaginationInterface } from "../../interfaces";
 import { toUrlEncoded } from "../../utils";
+import { getProductMutation } from "../../api/products";
 
 // import { useMutation, useQueryClient } from "@tanstack/react-query";
 
@@ -20,17 +21,25 @@ type Props = {
 
 const DataTable = (props: Props) => {
   const getClients = getClientsMutation();
+  const getProducts =  getProductMutation();
   const [pagination, setPagination] = useState<PaginationInterface>({pageNo: 0, pageSize: 10})
-  const [clients, setClients] = useState([]);
+  const [dataRows, setDataRows] = useState([]);
 
   useEffect(()=>{
-    const fetchClients = async () => {
+    const fetchData = async () => {
       // const response = await getClients.mutateAsync(toUrlEncoded(pagination));
-      const response = await getClients.mutateAsync();
-      console.log(response)
-      setClients(response)
+      if(props.slug==="clients"){
+        const response = await getClients.mutateAsync();
+        console.log(response)
+        setDataRows(response)
+      }
+      else if (props.slug === "products"){
+        const response = await getProducts.mutateAsync();
+        console.log(response)
+        setDataRows(response)
+      }
     }
-    fetchClients();
+    fetchData();
   }, [])
 
 
@@ -62,7 +71,7 @@ const DataTable = (props: Props) => {
       <DataGrid
         className="dataGrid"
         // rows={props.rows}
-        rows={clients}
+        rows={dataRows}
         columns={[...props.columns, actionColumn]}
         initialState={{
           pagination: {

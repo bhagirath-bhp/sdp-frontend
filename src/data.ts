@@ -49,14 +49,14 @@ export const menu = [
     listItems: [
       {
         id: 1,
-        title: "Invoices",
-        url: "/",
+        title: "Orders",
+        url: "/orders",
         icon: "element.svg",
       },
       {
         id: 2,
         title: "Tasks",
-        url: "/",
+        url: "/tasks",
         icon: "note.svg",
       },
       {
@@ -67,36 +67,36 @@ export const menu = [
       },
     ],
   },
-  {
-    id: 4,
-    title: "Maintenance",
-    listItems: [
-      {
-        id: 1,
-        title: "Settings",
-        url: "/",
-        icon: "setting.svg",
-      },
-    ],
-  },
-  {
-    id: 5,
-    title: "analytics",
-    listItems: [
-      {
-        id: 1,
-        title: "Charts",
-        url: "/",
-        icon: "chart.svg",
-      },
-      {
-        id: 2,
-        title: "Logs",
-        url: "/",
-        icon: "log.svg",
-      },
-    ],
-  },
+  // {
+  //   id: 4,
+  //   title: "Maintenance",
+  //   listItems: [
+  //     {
+  //       id: 1,
+  //       title: "Settings",
+  //       url: "/",
+  //       icon: "setting.svg",
+  //     },
+  //   ],
+  // },
+  // {
+  //   id: 5,
+  //   title: "analytics",
+  //   listItems: [
+  //     {
+  //       id: 1,
+  //       title: "Charts",
+  //       url: "/",
+  //       icon: "chart.svg",
+  //     },
+  //     {
+  //       id: 2,
+  //       title: "Logs",
+  //       url: "/",
+  //       icon: "log.svg",
+  //     },
+  //   ],
+  // },
   {
     id: 6,
     title: "User",

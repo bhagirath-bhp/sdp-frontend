@@ -1,0 +1,1 @@
+export { default as AddIcon } from "../assets/icons/add.svg"

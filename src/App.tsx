@@ -11,11 +11,14 @@ import User from "./pages/user/User";
 import Product from "./pages/product/Product";
 import SignInPage from "./pages/bhp/SignInPage";
 import SignUpPage from "./pages/bhp/SignUpPage";
+import AllOrdersAdminPage from "./pages/bhp/AllOrdersAdminPage";
+import AddOrderPage from "./pages/bhp/AddOrderPage";
 
 import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
+import TasksPage from "./pages/bhp/TasksPage";
 
 
 const queryClient = new QueryClient();
@@ -72,6 +75,18 @@ function App() {
         {
           path: "/signin",
           element: <SignInPage />,
+        },
+        {
+          path: "/orders",
+          element: <AllOrdersAdminPage />,
+        },
+        {
+          path: "/order/add",
+          element: <AddOrderPage />,
+        },
+        {
+          path: "/tasks",
+          element: <TasksPage />,
         },
       ],
     },

@@ -1,13 +1,16 @@
 import { GridColDef } from "@mui/x-data-grid";
 import DataTable from "../../components/dataTable/DataTable";
+
 import "./Users.scss";
 import { useState } from "react";
 import Add from "../../components/add/Add";
 import { userRows } from "../../data";
+import { Button } from "@material-tailwind/react";
+import { AddIcon } from "../../assets";
 // import { useQuery } from "@tanstack/react-query";
 
 const columns: GridColDef[] = [
-  { field: "id", headerName: "ID", width: 90 },
+  // { field: "id", headerName: "ID", width: 90 },
   // {
   //   field: "img",
   //   headerName: "Avatar",
@@ -45,7 +48,7 @@ const columns: GridColDef[] = [
     headerName: "Created At",
     width: 200,
     type: "date",
-    valueFormatter: params => new Date(params?.value).toLocaleString()
+    valueFormatter: (params) => new Date(params?.value).toDateString(),
   },
   {
     field: "verified",
@@ -72,7 +75,11 @@ const Users = () => {
     <div className="users">
       <div className="info">
         <h1>Clients</h1>
-        <button onClick={() => setOpen(true)}>Add New Client</button>
+        {/* <Button onClick={() => setOpen(true)}>Add New Client</Button> */}
+        <Button onClick={() => setOpen(true)} variant="outlined" className="btn-gold flex gap-2">
+          <img src={AddIcon} alt="" className="h-5" />
+          <span className="leading-5">Add New Client</span>
+        </Button>
       </div>
       <DataTable slug="clients" columns={columns} rows={userRows} />
       {/* TEST THE API */}
