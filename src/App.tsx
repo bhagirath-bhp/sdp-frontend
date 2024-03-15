@@ -13,17 +13,23 @@ import SignInPage from "./pages/bhp/SignInPage";
 import SignUpPage from "./pages/bhp/SignUpPage";
 import AllOrdersAdminPage from "./pages/bhp/AllOrdersAdminPage";
 import AddOrderPage from "./pages/bhp/AddOrderPage";
+import Cookies from "js-cookie"
 
 import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
 import TasksPage from "./pages/bhp/TasksPage";
+import { useEffect } from "react";
 
 
 const queryClient = new QueryClient();
 
+
 function App() {
+  useEffect(()=>{
+    console.log(Cookies.get('token'))
+  }, [])
   const Layout = () => {
     return (
       <div className="main relative">

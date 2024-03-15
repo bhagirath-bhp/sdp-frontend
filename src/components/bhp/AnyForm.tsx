@@ -39,6 +39,7 @@ const AnyForm: React.FC<FormProps> = ({ fields, formType }) => {
         if ("success" in response) {
           setIsLoading(false);
           Cookies.set("user", JSON.stringify(response));
+          Cookies.set("token", response.token);
           toast.success("Signed up successfully!", {
             position: "top-right",
             autoClose: 1000,
@@ -63,6 +64,7 @@ const AnyForm: React.FC<FormProps> = ({ fields, formType }) => {
         if ("success" in response) {
           setIsLoading(false);
           Cookies.set("user", JSON.stringify(response));
+          Cookies.set("token", response.token);
           toast.success("Signed in successfully!", {
             position: "top-right",
             autoClose: 1000,

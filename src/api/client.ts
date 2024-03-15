@@ -1,5 +1,5 @@
+import Cookies from "js-cookie"
 import { useMutation } from "@tanstack/react-query";
-
 const uri = import.meta.env.VITE_APP_URI;
 
 export const addClientMutation = () => {
@@ -10,6 +10,7 @@ export const addClientMutation = () => {
       body: formData,
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
+        'Authorization': `Bearer ${Cookies.get('token')}`
       },
     });
     return response.json();
@@ -19,6 +20,9 @@ export const getClientsMutation = () => {
   return useMutation(async () => {
     const response = await fetch(`${uri}/client/all`, {
       method: "GET",
+      headers: {
+        Authorization: `Bearer ${Cookies.get("token")}`,
+      },
     });
     return response.json();
   })

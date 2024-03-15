@@ -3,85 +3,109 @@ import { Button, Card, Input, List } from "@material-tailwind/react";
 import { SearchItem } from "../../components/bhp/SearchItem";
 import AddOrderItem from "../../components/bhp/AddOrderItem";
 import { searchMutation } from "../../api/products";
+import { addOrderMutation } from "../../api/order";
+import { ToastContainer, toast } from "react-toastify";
 
 const AddOrderPage = () => {
-  const [order, setOrder] = useState({
-    name: "",
-    description: "",
-    price: "",
-    images: [],
-    quantity: 0,
-    categoryId: "",
-    collectionId: "",
-  });
+  const [buyerName, setBuyerName] = useState("")
   const [searchText, setSearchText] = useState("");
   const [searchTimeout, setSearchTimeout] = useState(10);
-  const [searchItems, setSearcchItems] = useState([]);
+  const [searchItems, setSearchItems] = useState([]);
+  const [searchProductSet, setSearchProductSet] = useState<JSX.Element[]>([]);
+  const [orderItems, setOrderItems] = useState([]);
+  const [orderItemset, setOrderItemsset] = useState<JSX.Element[]>([]);
   const search = searchMutation();
+  const addOrder = addOrderMutation();
   const [isBtnLoading, setIsBtnLoading] = useState(false);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setOrder({ ...order, [name]: value });
-  };
 
+  const handleNameChange = (e: {target: {value: string}}) => {
+    setBuyerName(e.target.value)
+  }
   const handleSearchChange = (e: any) => {
     setSearchText(e.target.value);
     let newTimeout = 0;
     clearTimeout(searchTimeout);
     if (e.target.value.length > 2) {
       newTimeout = setTimeout(async () => {
-        const response = await search(searchText);
-        setSearcchItems(response);
-      }, 500);
+        const response = await search.mutateAsync(searchText);
+        setSearchItems(response);
+      }, 100);
     } else {
-      setSearcchItems([]);
+      setSearchItems([]);
     }
     setSearchTimeout(newTimeout);
   };
+  useEffect(() => {
+    const temp = searchItems.map((item: { pname: string }) => {
+      return (
+        <SearchItem
+          product={item}
+          orderItems={orderItems}
+          setOrderItems={setOrderItems}
+        />
+      );
+    });
+    setSearchProductSet(temp);
+  }, [searchItems, orderItems]);
 
-  // const handleSubmit = async (e) => {
-  //   setIsBtnLoading(true);
-  //   e.preventDefault();
+  useEffect(() => {
+    const temp = orderItems.map((item) => (
+      <AddOrderItem
+        product={item}
+        orderItems={orderItems}
+        setOrderItems={setOrderItems}
+      />
+    ));
+    setOrderItemsset(temp);
+  }, [orderItems]);
 
-  //   // Call the updated addNeworder function
-  //   const result = await addNewOrder(order);
+  const handleSubmit = async (e) => {
+    setIsBtnLoading(true);
+    e.preventDefault();
 
-  //   if (result) {
-  //     setIsBtnLoading(false);
-  //     setOrder({
-  //       name: "",
-  //       description: "",
-  //       price: "",
-  //       images: [],
-  //       quantity: 0,
-  //       categoryId: "",
-  //       collectionId: "",
-  //     });
-  //   } else {
-  //     // TODO: Handle failure
-  //   }
-  // };
+    // Call the updated addNeworder function
+    const order = {bname: buyerName, products: orderItems}
+    const response = await addOrder.mutateAsync(order);
+
+    if (response.success) {
+      setIsBtnLoading(false);
+      setOrderItems([]);
+      toast.success(response.message, {
+        position: "top-right",
+        autoClose: 1000,
+        theme: "light",
+      });
+    } else {
+      setIsBtnLoading(false);
+      setOrderItems([]);
+      toast.error(response.message, {
+        position: "top-right",
+        autoClose: 1000,
+        theme: "light",
+      });
+    }
+  };
 
   return (
     <>
       <div className="container mx-auto p-[2rem] flex flex-col">
         <h2 className="text-3xl font-semibold mb-4">Add Order</h2>
-        <form onSubmit={() => {}} className="flex flex-col space-y-4">
+        <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
           <div className="mb-2">
             <label
               htmlFor="name"
               className="block text-gray-700 text-sm font-bold mb-2"
             >
-              Order Name
+              Buyer Name
             </label>
             <input
               id="name"
               className="p-2 border-[1px] border-golden rounded w-full outline-none"
               type="text"
               name="name"
-              value={order.name}
-              onChange={handleChange}
+              value={buyerName}
+              onChange={handleNameChange}
             />
           </div>
           <div className="mb-2">
@@ -95,13 +119,7 @@ const AddOrderPage = () => {
               <Input label="search" onChange={handleSearchChange} />
             </div>
             <Card className="w-96]" placeholder="hii">
-              <List>
-                <SearchItem />
-                <SearchItem />
-                <SearchItem />
-                <SearchItem />
-                <SearchItem />
-              </List>
+              <List>{searchProductSet}</List>
             </Card>
           </div>
           <div className="mb-2">
@@ -113,9 +131,10 @@ const AddOrderPage = () => {
             </label>
             <Card className="w-96]" placeholder="hii">
               <List>
+                {/* <AddOrderItem />
                 <AddOrderItem />
-                <AddOrderItem />
-                <AddOrderItem />
+                <AddOrderItem /> */}
+                {orderItemset}
               </List>
             </Card>
           </div>
@@ -128,6 +147,7 @@ const AddOrderPage = () => {
             Add Order
           </Button>
         </form>
+        <ToastContainer/>
       </div>
     </>
   );

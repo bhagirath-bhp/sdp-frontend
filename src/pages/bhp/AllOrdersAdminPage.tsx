@@ -7,217 +7,43 @@ import {
   DialogHeader,
 } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
-// import AdminNavbar from "../../components/admin/AdminNavbar";
-// import { getAllOrdersForAdmin } from "../../api/order";
 import { DefaultPagination } from "../../components/bhp/DefaultPagination";
 import OrderItem from "../../components/bhp/OrderItem";
 import { AddIcon } from "../../assets";
 import { useNavigate } from "react-router-dom";
+import { getOrderMutation } from "../../api/order";
+import { ToastContainer, toast } from "react-toastify";
 
 const AllOrdersAdminPage = () => {
+  const getOrders = getOrderMutation();
   const [orders, setOrders] = useState([]);
-  const [pagination, setPagination] = useState({
-    page: 1,
-    pageSize: 6,
-    totalPages: 1,
-    totalProducts: 1,
-  });
+  // const [pagination, setPagination] = useState({
+  //   page: 1,
+  //   pageSize: 6,
+  //   totalPages: 1,
+  //   totalProducts: 1,
+  // });
 
-  async function fetchOrders(page) {
-    // const response = await getAllOrdersForAdmin(page);
-    const response = {
-      orders: [
-        {
-          orderId: "af7520c2-0a99-4259-8128-a585f0ed7f4e",
-          totalAmount: null,
-          orderitems: [
-            {
-              quantity: 1,
-              price: "11.00",
-              product: {
-                name: " DSP 1— Draco Beneficia Petitionem or DBP",
-              },
-            },
-          ],
-          user: {
-            first_name: "J",
-            last_name: "G",
-            email: "jai@guru.dev",
-            addresses: [
-              {
-                address_line_1: "ahbjhskd",
-                address_line_2: "ahmedabad",
-                city: "Ahmedabad",
-                state: null,
-                zipCode: "123455",
-                country: {
-                  countryName: "usa",
-                },
-              },
-              {
-                address_line_1: "ahbjhskd",
-                address_line_2: "ahmedabad",
-                city: "Ahmedabad",
-                state: null,
-                zipCode: "123455",
-                country: {
-                  countryName: "india",
-                },
-              },
-            ],
-          },
-        },
-        {
-          orderId: "d4663026-7abb-4760-b6aa-8caef4b7b175",
-          totalAmount: null,
-          orderitems: [
-            {
-              quantity: 2,
-              price: "11.00",
-              product: {
-                name: " DSP 1— Draco Beneficia Petitionem or DBP",
-              },
-            },
-            {
-              quantity: 1,
-              price: "22.00",
-              product: {
-                name: " DSP 2 — Draco Beneficia Petitionem or DBP",
-              },
-            },
-          ],
-          user: {
-            first_name: "J",
-            last_name: "G",
-            email: "jai@guru.dev",
-            addresses: [
-              {
-                address_line_1: "ahbjhskd",
-                address_line_2: "ahmedabad",
-                city: "Ahmedabad",
-                state: null,
-                zipCode: "123455",
-                country: {
-                  countryName: "usa",
-                },
-              },
-              {
-                address_line_1: "ahbjhskd",
-                address_line_2: "ahmedabad",
-                city: "Ahmedabad",
-                state: null,
-                zipCode: "123455",
-                country: {
-                  countryName: "india",
-                },
-              },
-            ],
-          },
-        },
-        {
-          orderId: "b2211fd9-0463-4bb4-8535-ca76b88f51b0",
-          totalAmount: null,
-          orderitems: [
-            {
-              quantity: 3,
-              price: "11.00",
-              product: {
-                name: " DSP 1— Draco Beneficia Petitionem or DBP",
-              },
-            },
-            {
-              quantity: 1,
-              price: "22.00",
-              product: {
-                name: " DSP 2 — Draco Beneficia Petitionem or DBP",
-              },
-            },
-          ],
-          user: {
-            first_name: "J",
-            last_name: "G",
-            email: "jai@guru.dev",
-            addresses: [
-              {
-                address_line_1: "ahbjhskd",
-                address_line_2: "ahmedabad",
-                city: "Ahmedabad",
-                state: null,
-                zipCode: "123455",
-                country: {
-                  countryName: "usa",
-                },
-              },
-              {
-                address_line_1: "ahbjhskd",
-                address_line_2: "ahmedabad",
-                city: "Ahmedabad",
-                state: null,
-                zipCode: "123455",
-                country: {
-                  countryName: "india",
-                },
-              },
-            ],
-          },
-        },
-        {
-          orderId: "f124a32a-ad18-4edb-b1b3-d92a89fe6d0c",
-          totalAmount: null,
-          orderitems: [
-            {
-              quantity: 1,
-              price: "22.00",
-              product: {
-                name: " DSP 2 — Draco Beneficia Petitionem or DBP",
-              },
-            },
-          ],
-          user: {
-            first_name: "J",
-            last_name: "G",
-            email: "jai@guru.dev",
-            addresses: [
-              {
-                address_line_1: "ahbjhskd",
-                address_line_2: "ahmedabad",
-                city: "Ahmedabad",
-                state: null,
-                zipCode: "123455",
-                country: {
-                  countryName: "usa",
-                },
-              },
-              {
-                address_line_1: "ahbjhskd",
-                address_line_2: "ahmedabad",
-                city: "Ahmedabad",
-                state: null,
-                zipCode: "123455",
-                country: {
-                  countryName: "india",
-                },
-              },
-            ],
-          },
-        },
-      ],
-      pagination: {
-        page: 1,
-        pageSize: 6,
-        totalProducts: 12,
-        totalPages: 2,
-      },
-    };
-    console.log(response);
-    setOrders(response.orders);
-    setPagination(response.pagination);
+  // async function fetchOrders(page) {
+  async function fetchOrders() {
+    const response = await getOrders.mutateAsync();
+    console.log(response)
+    if(response.error){
+      toast.error(response.error, {
+        position: "top-right",
+        autoClose: 1000,
+        theme: "light",
+      });
+    }
+    setOrders(response);
+    // setPagination(response.pagination);
   }
-  const handlePageChange = (newpage) => {
-    fetchOrders(newpage);
-  };
+  // const handlePageChange = (newpage) => {
+  //   fetchOrders(newpage);
+  // };
   useEffect(() => {
-    fetchOrders(1);
+    // fetchOrders(1);
+    fetchOrders();
   }, []);
 
   const ordersComponentSet = orders.map((orderItem, index) => (
@@ -261,22 +87,20 @@ const AllOrdersAdminPage = () => {
               <th scope="col" className="px-6 py-3 text-sm">
                 Action
               </th>
-              <th scope="col" className="px-6 py-3 text-sm">
-                Invoice
-              </th>
             </tr>
           </thead>
           <tbody>{ordersComponentSet}</tbody>
         </table>
-        <div className="pagination-container mt-6">
+        {/* <div className="pagination-container mt-6">
           <DefaultPagination
             totalPages={pagination.totalPages}
             currentPage={pagination.page}
             onPageChange={handlePageChange}
             visiblePages={5}
           />
-        </div>
+        </div> */}
       </div>
+      <ToastContainer/>
     </div>
   );
 };

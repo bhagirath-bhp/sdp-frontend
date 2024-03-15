@@ -25,16 +25,36 @@ function TrashIcon() {
         </svg>
     );
 }
-const AddOrderItem = ({ imageURL, pname }) => {
-    const [value, setvalue] = useState(0);
+interface Product {
+    pid: string;
+    pname: string;
+    imageURL: string;
+    price: number;
+    quantity: number
+  }
+  
+  interface OrderItem {
+    pid: string;
+    pname: string;
+    quantity: number;
+    imageURL: string;
+  }
+  
+  interface Props {
+    product: Product;
+    orderItems: OrderItem[];
+    setOrderItems: Function;
+  }
+const AddOrderItem = ({ product, orderItems, setOrderItems }: Props) => {
+    const [value, setvalue] = useState(product.quantity);
     return (
         <ListItem ripple={false}>
             <ListItemPrefix>
-                <Avatar variant="circular" alt="candice" src="https://docs.material-tailwind.com/img/face-1.jpg" />
+                <Avatar variant="circular" alt="candice" src={product.imageURL || "https://docs.material-tailwind.com/img/face-1.jpg"} />
             </ListItemPrefix>
             <div className="flex items-center">
                 <Typography variant="h6" color="blue-gray">
-                    {pname || "something goes here"}
+                    {product.pname || "something goes here"}
                 </Typography>
                 <CustomCounter value={value} setValue={setvalue}/>
             </div>

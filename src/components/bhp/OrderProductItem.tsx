@@ -1,7 +1,7 @@
 import { Button } from "@material-tailwind/react"
 import { useState } from "react"
 
-const OrderProductItem = ({ id, pname, uname, quantity, price }) => {
+const OrderProductItem = ({ id, pname, quantity, price }) => {
     const [btnState, setBtnState] = useState("Remove");
     const [btnColor, setBtnColor] = useState("golden")
     const handleClick = () => {

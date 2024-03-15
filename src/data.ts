@@ -67,36 +67,36 @@ export const menu = [
       },
     ],
   },
-  // {
-  //   id: 4,
-  //   title: "Maintenance",
-  //   listItems: [
-  //     {
-  //       id: 1,
-  //       title: "Settings",
-  //       url: "/",
-  //       icon: "setting.svg",
-  //     },
-  //   ],
-  // },
-  // {
-  //   id: 5,
-  //   title: "analytics",
-  //   listItems: [
-  //     {
-  //       id: 1,
-  //       title: "Charts",
-  //       url: "/",
-  //       icon: "chart.svg",
-  //     },
-  //     {
-  //       id: 2,
-  //       title: "Logs",
-  //       url: "/",
-  //       icon: "log.svg",
-  //     },
-  //   ],
-  // },
+  {
+    id: 4,
+    title: "Maintenance",
+    listItems: [
+      {
+        id: 1,
+        title: "Settings",
+        url: "/settings",
+        icon: "setting.svg",
+      },
+    ],
+  },
+  {
+    id: 5,
+    title: "analytics",
+    listItems: [
+      {
+        id: 1,
+        title: "Charts",
+        url: "/settings/charts",
+        icon: "chart.svg",
+      },
+      {
+        id: 2,
+        title: "Logs",
+        url: "/settings/logs",
+        icon: "log.svg",
+      },
+    ],
+  },
   {
     id: 6,
     title: "User",
@@ -137,6 +137,7 @@ export const menu = [
         url: "/",
         onClickFn: () => {
           Cookies.remove("user");
+          Cookies.remove("token");
           window.location.reload();
         },
         icon: "close.png",
