@@ -4,7 +4,6 @@ const uri = import.meta.env.VITE_APP_URI;
 
 export const addClientMutation = () => {
   return useMutation(async (formData: BodyInit) => {
-    console.log(formData);
     const response = await fetch(`${uri}/client/add`, {
       method: "POST",
       body: formData,
@@ -17,8 +16,8 @@ export const addClientMutation = () => {
   });
 };
 export const getClientsMutation = () => {
-  return useMutation(async () => {
-    const response = await fetch(`${uri}/client/all`, {
+  return useMutation(async (userId: string) => {
+    const response = await fetch(`${uri}/client/all/${userId}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${Cookies.get("token")}`,

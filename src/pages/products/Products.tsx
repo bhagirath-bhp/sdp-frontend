@@ -6,6 +6,7 @@ import { GridColDef } from "@mui/x-data-grid";
 import { products } from "../../data";
 import { Button } from "@material-tailwind/react";
 import { AddIcon } from "../../assets";
+import Handler from "../../components/state/handler";
 
 const columns: GridColDef[] = [
   // { field: "id", headerName: "ID", width: 90 },
@@ -67,6 +68,7 @@ const Products = () => {
   return (
     <>
       <div className="products">
+      <Handler/>
         <div className="info">
           <h1>Products</h1>
           <Button

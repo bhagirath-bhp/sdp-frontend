@@ -1,14 +1,12 @@
 import Cookies from "js-cookie";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { userState } from "../state/recoilState";
 
 const UserBadge = () => {
     const [userCick, setUserClick] = useState(false);
-    const userString = Cookies.get("user");
-    let user: {name: string, email: string, profileURL: string};
-    if(userString){
-      user = JSON.parse(userString);
-    }
+    const user = useRecoilValue(userState);
     return (
         <div className="flex items-center md:order-2 flex-col relative text-white">
             <button type="button" className="flex text-sm rounded-full focus:ring-1 focus:ring-golden" id="user-menu-button" onClick={() => { (userCick) ? setUserClick(false) : setUserClick(true) }}>

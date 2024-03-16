@@ -5,9 +5,12 @@ import AddOrderItem from "../../components/bhp/AddOrderItem";
 import { searchMutation } from "../../api/products";
 import { addOrderMutation } from "../../api/order";
 import { ToastContainer, toast } from "react-toastify";
+import { userState } from "../../components/state/recoilState";
+import { useRecoilValue } from "recoil";
+import Handler from "../../components/state/handler";
 
 const AddOrderPage = () => {
-  const [buyerName, setBuyerName] = useState("")
+  const [buyerName, setBuyerName] = useState("");
   const [searchText, setSearchText] = useState("");
   const [searchTimeout, setSearchTimeout] = useState(10);
   const [searchItems, setSearchItems] = useState([]);
@@ -17,18 +20,19 @@ const AddOrderPage = () => {
   const search = searchMutation();
   const addOrder = addOrderMutation();
   const [isBtnLoading, setIsBtnLoading] = useState(false);
+  const user = useRecoilValue(userState);
 
-
-  const handleNameChange = (e: {target: {value: string}}) => {
-    setBuyerName(e.target.value)
-  }
+  const handleNameChange = (e: { target: { value: string } }) => {
+    setBuyerName(e.target.value);
+  };
   const handleSearchChange = (e: any) => {
     setSearchText(e.target.value);
     let newTimeout = 0;
     clearTimeout(searchTimeout);
     if (e.target.value.length > 2) {
       newTimeout = setTimeout(async () => {
-        const response = await search.mutateAsync(searchText);
+        const query = { userId: user.userId, name: searchText };
+        const response = await search.mutateAsync(query);
         setSearchItems(response);
       }, 100);
     } else {
@@ -64,8 +68,18 @@ const AddOrderPage = () => {
     setIsBtnLoading(true);
     e.preventDefault();
 
-    // Call the updated addNeworder function
-    const order = {bname: buyerName, products: orderItems}
+    const totalAmount = orderItems.reduce(
+      (accumulator, item: { quantity: number; price: number }) => {
+        return accumulator + item.quantity * item.price;
+      },
+      0
+    );
+    const order = {
+      userId: user.userId,
+      bname: buyerName,
+      products: orderItems,
+      totalAmount: totalAmount,
+    };
     const response = await addOrder.mutateAsync(order);
 
     if (response.success) {
@@ -90,6 +104,7 @@ const AddOrderPage = () => {
   return (
     <>
       <div className="container mx-auto p-[2rem] flex flex-col">
+        <Handler />
         <h2 className="text-3xl font-semibold mb-4">Add Order</h2>
         <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
           <div className="mb-2">
@@ -147,7 +162,7 @@ const AddOrderPage = () => {
             Add Order
           </Button>
         </form>
-        <ToastContainer/>
+        <ToastContainer />
       </div>
     </>
   );

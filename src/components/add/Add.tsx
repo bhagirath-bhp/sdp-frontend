@@ -5,6 +5,8 @@ import { ToastContainer, toast } from "react-toastify";
 import { toUrlEncoded } from "../../utils";
 import { addClientMutation } from "../../api/client";
 import { addProductMutation } from "../../api/products";
+import { userState } from "../state/recoilState";
+import { useRecoilValue } from "recoil";
 
 type Props = {
   slug: string;
@@ -16,12 +18,17 @@ const Add = (props: Props) => {
   const [form, setForm] = useState<{ [key: string]: string | Date | File }>({});
   const addClient = addClientMutation();
   const addProduct = addProductMutation();
+  const user = useRecoilValue(userState);
+
 
   const handleFormChange = (key: string, value: string | Date | File) => {
     setForm((prevForm) => ({
       ...prevForm,
       [key]: value,
     }));
+    setForm((prevForm)=>({
+      ...prevForm, userId: user.userId
+    }))
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

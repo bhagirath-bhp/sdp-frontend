@@ -13,10 +13,15 @@ import { AddIcon } from "../../assets";
 import { useNavigate } from "react-router-dom";
 import { getOrderMutation } from "../../api/order";
 import { ToastContainer, toast } from "react-toastify";
+import { useRecoilValue } from "recoil";
+import { userState } from "../../components/state/recoilState";
+import Handler from "../../components/state/handler";
+
 
 const AllOrdersAdminPage = () => {
   const getOrders = getOrderMutation();
   const [orders, setOrders] = useState([]);
+  const user = useRecoilValue(userState)
   // const [pagination, setPagination] = useState({
   //   page: 1,
   //   pageSize: 6,
@@ -26,7 +31,7 @@ const AllOrdersAdminPage = () => {
 
   // async function fetchOrders(page) {
   async function fetchOrders() {
-    const response = await getOrders.mutateAsync();
+    const response = await getOrders.mutateAsync(user.userId);
     console.log(response)
     if(response.error){
       toast.error(response.error, {
@@ -46,13 +51,17 @@ const AllOrdersAdminPage = () => {
     fetchOrders();
   }, []);
 
-  const ordersComponentSet = orders.map((orderItem, index) => (
+
+  const ordersComponentSet = Array.isArray(orders) 
+  ? orders.map((orderItem, index) => (
     <OrderItem key={index} index={index} order={orderItem} />
-  ));
+  ))
+  : <tr className="text-center">No orders found </tr>
 
    const navigate = useNavigate();
   return (
     <div className="relative overflow-x-auto shadow-md">
+      <Handler/>
       {/* <AdminNavbar /> */}
       <div className="info flex w-full justify-between">
         <h1>Orders</h1>

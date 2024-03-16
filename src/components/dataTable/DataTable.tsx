@@ -10,6 +10,8 @@ import { useEffect, useState } from "react";
 import { PaginationInterface } from "../../interfaces";
 import { toUrlEncoded } from "../../utils";
 import { getProductMutation } from "../../api/products";
+import { userState } from "../state/recoilState";
+import { useRecoilValue } from "recoil";
 
 // import { useMutation, useQueryClient } from "@tanstack/react-query";
 
@@ -24,17 +26,19 @@ const DataTable = (props: Props) => {
   const getProducts =  getProductMutation();
   const [pagination, setPagination] = useState<PaginationInterface>({pageNo: 0, pageSize: 10})
   const [dataRows, setDataRows] = useState([]);
+  const user = useRecoilValue(userState);
+
 
   useEffect(()=>{
     const fetchData = async () => {
       // const response = await getClients.mutateAsync(toUrlEncoded(pagination));
       if(props.slug==="clients"){
-        const response = await getClients.mutateAsync();
+        const response = await getClients.mutateAsync(user.userId);
         console.log(response)
         setDataRows(response)
       }
       else if (props.slug === "products"){
-        const response = await getProducts.mutateAsync();
+        const response = await getProducts.mutateAsync(user.userId);
         console.log(response)
         setDataRows(response)
       }

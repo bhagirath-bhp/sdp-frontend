@@ -4,6 +4,8 @@ import { IoIosAdd } from "react-icons/io";
 import { addTaskMutation, getTaskMutation } from "../../api/task";
 import { Fragment, useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import Handler from "../../components/state/handler";
+
 
 const TasksPage = () => {
   const [task, setTask] = useState({ title: "" });
@@ -83,6 +85,7 @@ const TasksPage = () => {
 
   return (
     <div>
+      <Handler/>
       <div className="flex gap-2">
         <Input label="Add task" value={task.title} onChange={handleChange} />
         <IconButton size="md" onClick={handleSubmit}>

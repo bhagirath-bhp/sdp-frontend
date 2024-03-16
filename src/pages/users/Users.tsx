@@ -7,6 +7,8 @@ import Add from "../../components/add/Add";
 import { userRows } from "../../data";
 import { Button } from "@material-tailwind/react";
 import { AddIcon } from "../../assets";
+import Handler from "../../components/state/handler";
+
 // import { useQuery } from "@tanstack/react-query";
 
 const columns: GridColDef[] = [
@@ -73,6 +75,7 @@ const Users = () => {
 
   return (
     <div className="users">
+      <Handler/>
       <div className="info">
         <h1>Clients</h1>
         {/* <Button onClick={() => setOpen(true)}>Add New Client</Button> */}

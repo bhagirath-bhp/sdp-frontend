@@ -17,8 +17,8 @@ export const addProductMutation = () => {
   });
 };
 export const getProductMutation = () => {
-  return useMutation(async () => {
-    const response = await fetch(`${uri}/product/all`, {
+  return useMutation(async (userId: string) => {
+    const response = await fetch(`${uri}/product/all/${userId}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${Cookies.get("token")}`,
@@ -28,8 +28,8 @@ export const getProductMutation = () => {
   });
 };
 export const searchMutation = () => {
-  return useMutation(async (name: string) => {
-    const response = await fetch(`${uri}/product/search?name=${name}`, {
+  return useMutation(async (query: {userId: string, name: string}) => {
+    const response = await fetch(`${uri}/product/search/${query.userId}?name=${query.name}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${Cookies.get("token")}`,

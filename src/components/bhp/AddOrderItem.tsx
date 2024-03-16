@@ -7,7 +7,7 @@ import {
     IconButton,
 } from "@material-tailwind/react";
 import CustomCounter from "./CustomCounter"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function TrashIcon() {
     return (
@@ -47,6 +47,14 @@ interface Product {
   }
 const AddOrderItem = ({ product, orderItems, setOrderItems }: Props) => {
     const [value, setvalue] = useState(product.quantity);
+    useEffect(()=>{
+        const updatedOrder = orderItems.map((item)=>{
+            if(item.pid === product.pid){
+                return {...item, quantity: value}
+            }
+        })
+        setOrderItems(updatedOrder)
+    }, [value])
     return (
         <ListItem ripple={false}>
             <ListItemPrefix>

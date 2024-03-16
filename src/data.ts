@@ -114,24 +114,6 @@ export const menu = [
         icon: "log.svg",
       },
       {
-        id: 3,
-        title: "Profile",
-        url: "/signup",
-        icon: "chart.svg",
-      },
-      {
-        id: 4,
-        title: "Orders",
-        url: "/signin",
-        icon: "log.svg",
-      },
-      {
-        id: 5,
-        title: "Collections",
-        url: "/signin",
-        icon: "log.svg",
-      },
-      {
         id: 6,
         title: "Sign Out",
         url: "/",

@@ -19,8 +19,8 @@ export const addOrderMutation = () => {
 
 
 export const getOrderMutation = () => {
-    return useMutation(async () => {
-      const response = await fetch(`${uri}/order/all`, {
+    return useMutation(async (userId: string) => {
+      const response = await fetch(`${uri}/order/all/${userId}`, {
         method: "GET",
         // body: JSON.stringify(task),
         headers: {

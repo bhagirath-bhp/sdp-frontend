@@ -13,39 +13,35 @@ import SignInPage from "./pages/bhp/SignInPage";
 import SignUpPage from "./pages/bhp/SignUpPage";
 import AllOrdersAdminPage from "./pages/bhp/AllOrdersAdminPage";
 import AddOrderPage from "./pages/bhp/AddOrderPage";
-import Cookies from "js-cookie"
-
-import {
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
+import Cookies from "js-cookie";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import TasksPage from "./pages/bhp/TasksPage";
 import { useEffect } from "react";
-
+import Handler from "./components/state/handler";
+import { RecoilRoot } from "recoil";
 
 const queryClient = new QueryClient();
 
-
 function App() {
-  useEffect(()=>{
-    console.log(Cookies.get('token'))
-  }, [])
   const Layout = () => {
     return (
-      <div className="main relative">
-        <Navbar />
-        <div className="container">
-          <div className="menuContainer">
-            <Menu />
+      <RecoilRoot>
+        <div className="main relative">
+          <Handler />
+          <Navbar />
+          <div className="container">
+            <div className="menuContainer">
+              <Menu />
+            </div>
+            <div className="contentContainer">
+              <QueryClientProvider client={queryClient}>
+                <Outlet />
+              </QueryClientProvider>
+            </div>
           </div>
-          <div className="contentContainer">
-            <QueryClientProvider client={queryClient}>
-              <Outlet />
-            </QueryClientProvider>
-          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
+      </RecoilRoot>
     );
   };
 
