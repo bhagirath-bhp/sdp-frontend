@@ -13,12 +13,13 @@ import SignInPage from "./pages/bhp/SignInPage";
 import SignUpPage from "./pages/bhp/SignUpPage";
 import AllOrdersAdminPage from "./pages/bhp/AllOrdersAdminPage";
 import AddOrderPage from "./pages/bhp/AddOrderPage";
-import Cookies from "js-cookie";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import TasksPage from "./pages/bhp/TasksPage";
-import { useEffect } from "react";
 import Handler from "./components/state/handler";
 import { RecoilRoot } from "recoil";
+import ErrorBoundary from "./pages/bhp/ErrorBoundary";
+import ComingSoon from "./pages/bhp/ComingSoon";
+import ScrollToTop from "./components/bhp/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -27,7 +28,7 @@ function App() {
     return (
       <RecoilRoot>
         <div className="main relative">
-          <Handler />
+          {/* <Handler /> */}
           <Navbar />
           <div className="container">
             <div className="menuContainer">
@@ -48,7 +49,13 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Layout />,
+      element: (
+        <ErrorBoundary>
+          <ScrollToTop>
+            <Layout />
+          </ScrollToTop>
+        </ErrorBoundary>
+      ),
       children: [
         {
           path: "/",
@@ -89,6 +96,18 @@ function App() {
         {
           path: "/tasks",
           element: <TasksPage />,
+        },
+        {
+          path: "/settings",
+          element: <ComingSoon />,
+        },
+        {
+          path: "/settings/charts",
+          element: <ComingSoon />,
+        },
+        {
+          path: "/settings/logs",
+          element: <ComingSoon />,
         },
       ],
     },
