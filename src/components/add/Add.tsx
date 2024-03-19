@@ -7,6 +7,7 @@ import { addClientMutation } from "../../api/client";
 import { addProductMutation } from "../../api/products";
 import { userState } from "../state/recoilState";
 import { useRecoilValue } from "recoil";
+import { Button } from "@material-tailwind/react";
 
 type Props = {
   slug: string;
@@ -19,19 +20,21 @@ const Add = (props: Props) => {
   const addClient = addClientMutation();
   const addProduct = addProductMutation();
   const user = useRecoilValue(userState);
-
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleFormChange = (key: string, value: string | Date | File) => {
     setForm((prevForm) => ({
       ...prevForm,
       [key]: value,
     }));
-    setForm((prevForm)=>({
-      ...prevForm, userId: user.userId
-    }))
+    setForm((prevForm) => ({
+      ...prevForm,
+      userId: user.userId,
+    }));
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    setIsLoading(true);
     e.preventDefault();
     if (props.slug === "client") {
       setTimeout(async () => {
@@ -39,6 +42,7 @@ const Add = (props: Props) => {
           const response = await addClient.mutateAsync(toUrlEncoded(form));
           console.log(response);
           if ("success" in response) {
+            setIsLoading(false);
             toast.success("Client added successfully!", {
               position: "top-right",
               autoClose: 1000,
@@ -46,6 +50,7 @@ const Add = (props: Props) => {
             });
           }
         } catch (error) {
+          setIsLoading(false);
           console.error("Error adding client:", error);
           const { message } = error;
           toast.error(message || "An error occurred", {
@@ -55,6 +60,7 @@ const Add = (props: Props) => {
           });
         }
         props.setOpen(false);
+        window.location.replace("/users");
       }, 1000);
     } else if (props.slug === "product") {
       const formData = new FormData();
@@ -69,6 +75,7 @@ const Add = (props: Props) => {
           const response = await addProduct.mutateAsync(formData);
           console.log(response);
           if ("success" in response) {
+            setIsLoading(false);
             toast.success("Product added successfully!", {
               position: "top-right",
               autoClose: 1000,
@@ -77,6 +84,7 @@ const Add = (props: Props) => {
           }
         } catch (error) {
           console.error("Error adding product:", error);
+          setIsLoading(false);
           const { message } = error;
           toast.error(message || "An error occurred", {
             position: "top-right",
@@ -85,6 +93,7 @@ const Add = (props: Props) => {
           });
         }
         props.setOpen(false);
+        window.location.replace("/products");
       }, 1000);
     }
   };
@@ -132,7 +141,14 @@ const Add = (props: Props) => {
                   )}
                 </div>
               ))}
-            <button className="button">Send</button>
+            <Button
+              type="submit"
+              loading={isLoading}
+              className="button"
+              placeholder=""
+            >
+              {!isLoading ? "Submit" : "Sending"}
+            </Button>
           </form>
         </div>
       </div>

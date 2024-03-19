@@ -4,6 +4,7 @@ import { menu } from "../../data";
 import Cookies from "js-cookie";
 
 const Menu = () => {
+
   const menuItemComponentSet = menu.map((item) => {
     return (
       <div className="item" key={item.id}>

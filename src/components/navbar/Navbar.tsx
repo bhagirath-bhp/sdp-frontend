@@ -1,7 +1,6 @@
 import UserBadge from "../bhp/UserBadge";
 import Cookies from "js-cookie";
 import "./navbar.scss";
-
 const Navbar = () => {
   return (
     <div className="navbar">

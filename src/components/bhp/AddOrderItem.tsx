@@ -55,6 +55,11 @@ const AddOrderItem = ({ product, orderItems, setOrderItems }: Props) => {
         })
         setOrderItems(updatedOrder)
     }, [value])
+
+    const deleteProduct = () => {
+        const updateOrder = orderItems.filter(item => item.pid != product.pid)
+        setOrderItems(updateOrder);
+    }
     return (
         <ListItem ripple={false}>
             <ListItemPrefix>
@@ -67,7 +72,7 @@ const AddOrderItem = ({ product, orderItems, setOrderItems }: Props) => {
                 <CustomCounter value={value} setValue={setvalue}/>
             </div>
             <ListItemSuffix placeholder="hii">
-                <IconButton variant="text" color="blue-gray" placeholder="hii">
+                <IconButton variant="text" color="blue-gray" placeholder="hii" onClick={deleteProduct}>
                     <TrashIcon />
                 </IconButton>
             </ListItemSuffix>

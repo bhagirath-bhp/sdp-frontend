@@ -46,7 +46,7 @@ const AnyForm: React.FC<FormProps> = ({ fields, formType }) => {
             theme: "light",
           });
           setTimeout(() => {
-            navigate("/");
+            window.location.replace("/dashboard");
           }, 1000);
         } else {
           const { message } = response;
@@ -71,7 +71,7 @@ const AnyForm: React.FC<FormProps> = ({ fields, formType }) => {
             theme: "light",
           });
           setTimeout(() => {
-            window.location.replace("/");
+            window.location.replace("/dashboard");
             // navigate("/");
           }, 1000);
         } else {

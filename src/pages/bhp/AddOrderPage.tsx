@@ -8,6 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { userState } from "../../components/state/recoilState";
 import { useRecoilValue } from "recoil";
 import Handler from "../../components/state/handler";
+import { useNavigate } from "react-router-dom";
 
 const AddOrderPage = () => {
   const [buyerName, setBuyerName] = useState("");
@@ -21,6 +22,7 @@ const AddOrderPage = () => {
   const addOrder = addOrderMutation();
   const [isBtnLoading, setIsBtnLoading] = useState(false);
   const user = useRecoilValue(userState);
+  const navigate = useNavigate();
 
   const handleNameChange = (e: { target: { value: string } }) => {
     setBuyerName(e.target.value);
@@ -90,6 +92,9 @@ const AddOrderPage = () => {
         autoClose: 1000,
         theme: "light",
       });
+      setTimeout(() => {
+        navigate("/orders");
+      }, 1000);
     } else {
       setIsBtnLoading(false);
       setOrderItems([]);

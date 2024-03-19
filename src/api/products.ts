@@ -38,3 +38,14 @@ export const searchMutation = () => {
     return response.json();
   });
 };
+export const deleteProductMutation = () => {
+  return useMutation(async (productId: string) => {
+    const response = await fetch(`${uri}/product/delete/${productId}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${Cookies.get("token")}`,
+      },
+    });
+    return response.json();
+  });
+};

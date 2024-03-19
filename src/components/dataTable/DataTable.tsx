@@ -5,13 +5,14 @@ import {
 } from "@mui/x-data-grid";
 import "./dataTable.scss";
 import { Link } from "react-router-dom";
-import { getClientsMutation } from "../../api/client";
+import { deleteClientMutation, getClientsMutation } from "../../api/client";
 import { useEffect, useState } from "react";
 import { PaginationInterface } from "../../interfaces";
-import { toUrlEncoded } from "../../utils";
-import { getProductMutation } from "../../api/products";
+import { deleteProductMutation, getProductMutation } from "../../api/products";
 import { userState } from "../state/recoilState";
 import { useRecoilValue } from "recoil";
+import { ToastContainer, toast } from "react-toastify";
+
 
 // import { useMutation, useQueryClient } from "@tanstack/react-query";
 
@@ -24,6 +25,8 @@ type Props = {
 const DataTable = (props: Props) => {
   const getClients = getClientsMutation();
   const getProducts =  getProductMutation();
+  const deleteProduct =  deleteProductMutation();
+  const deleteClient =  deleteClientMutation();
   const [pagination, setPagination] = useState<PaginationInterface>({pageNo: 0, pageSize: 10})
   const [dataRows, setDataRows] = useState([]);
   const user = useRecoilValue(userState);
@@ -47,9 +50,48 @@ const DataTable = (props: Props) => {
   }, [])
 
 
-  const handleDelete = (id: number) => {
+  const handleDelete = async (slugId: string) => {
     //delete the item
     // mutation.mutate(id)
+    if(props.slug==="clients"){
+      const response = await deleteClient.mutateAsync(slugId);
+      console.log(response)
+      if(response.success){
+        const updateData = dataRows.filter(item => item.id != slugId);
+        setDataRows(updateData);
+        toast.success(response.message, {
+          position: "top-right",
+          autoClose: 1200,
+          theme: "light",
+        });
+      }
+      else{
+        toast.error(response.message, {
+          position: "top-right",
+          autoClose: 1200,
+          theme: "light",
+        });
+      }
+    }
+    else if(props.slug==="products"){
+      const response = await deleteProduct.mutateAsync(slugId);
+      if(response.success){
+        const updateData = dataRows.filter(item => item.id != slugId)
+        setDataRows(updateData);
+        toast.success(response.message, {
+          position: "top-right",
+          autoClose: 1200,
+          theme: "light",
+        });
+      }
+      else{
+        toast.error(response.message, {
+          position: "top-right",
+          autoClose: 1200,
+          theme: "light",
+        });
+      }
+    }
   };
 
   const actionColumn: GridColDef = {
@@ -62,7 +104,9 @@ const DataTable = (props: Props) => {
           <Link to={`/${props.slug}/${params.row.id}`}>
             <img src="/view.svg" alt="" />
           </Link>
-          <div className="delete" onClick={() => handleDelete(params.row.id)}>
+          <div className="delete" onClick={() => {
+            handleDelete(params.row.id)
+          }}>
             <img src="/delete.svg" alt="" />
           </div>
         </div>
@@ -98,6 +142,7 @@ const DataTable = (props: Props) => {
         disableDensitySelector
         disableColumnSelector
       />
+      <ToastContainer position="top-right" autoClose={1000} theme="light" />
     </div>
   );
 };

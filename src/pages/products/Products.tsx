@@ -41,13 +41,13 @@ const columns: GridColDef[] = [
     type: "string",
     width: 200,
   },
-  {
-    field: "lastUpdated",
-    headerName: "Last Updated",
-    width: 200,
-    type: "date",
-    valueFormatter: (params) => new Date(params?.value).toDateString(),
-  },
+  // {
+  //   field: "lastUpdated",
+  //   headerName: "Last Updated",
+  //   width: 200,
+  //   type: "date",
+  //   valueFormatter: (params) => new Date(params?.value).toDateString(),
+  // },
   {
     field: "quantity",
     headerName: "Quantity",

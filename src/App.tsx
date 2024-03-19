@@ -1,5 +1,5 @@
 import Home from "./pages/home/Home";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet, useLocation } from "react-router-dom";
 import Users from "./pages/users/Users";
 import Products from "./pages/products/Products";
 import Navbar from "./components/navbar/Navbar";
@@ -20,21 +20,27 @@ import { RecoilRoot } from "recoil";
 import ErrorBoundary from "./pages/bhp/ErrorBoundary";
 import ComingSoon from "./pages/bhp/ComingSoon";
 import ScrollToTop from "./components/bhp/ScrollToTop";
+import LandingPage from "./pages/bhp/LandingPage";
+
 
 const queryClient = new QueryClient();
 
 function App() {
   const Layout = () => {
+    const location = useLocation();
+    const isMenuHidden = (location.pathname === "/");
     return (
       <RecoilRoot>
         <div className="main relative">
           {/* <Handler /> */}
-          <Navbar />
+          <div className={`${isMenuHidden?"hidden":"block"}`}>
+            <Navbar />
+          </div>
           <div className="container">
-            <div className="menuContainer">
+            <div className={`menuContainer ${isMenuHidden?"hidden":"block"}`}>
               <Menu />
             </div>
-            <div className="contentContainer">
+            <div className={`contentContainer ${isMenuHidden?"w-full":"w-[80%]"}`}>
               <QueryClientProvider client={queryClient}>
                 <Outlet />
               </QueryClientProvider>
@@ -59,6 +65,10 @@ function App() {
       children: [
         {
           path: "/",
+          element: <LandingPage />,
+        },
+        {
+          path: "/dashboard",
           element: <Home />,
         },
         {

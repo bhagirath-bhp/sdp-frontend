@@ -88,7 +88,7 @@ const AllOrdersAdminPage = () => {
                                 Product
                             </th> */}
               <th scope="col" className="px-6 py-3 text-sm">
-                Qty
+                Items
               </th>
               <th scope="col" className="px-6 py-3 text-sm">
                 Amount

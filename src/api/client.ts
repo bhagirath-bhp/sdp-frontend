@@ -26,3 +26,16 @@ export const getClientsMutation = () => {
     return response.json();
   })
 }
+
+
+export const deleteClientMutation = () => {
+  return useMutation(async (clientId: string) => {
+    const response = await fetch(`${uri}/client/delete/${clientId}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${Cookies.get("token")}`,
+      },
+    });
+    return response.json();
+  });
+};

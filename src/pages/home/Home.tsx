@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import BarChartBox from "../../components/barChartBox/BarChartBox";
 import BigChartBox from "../../components/bigChartBox/BigChartBox";
 import ChartBox from "../../components/chartBox/ChartBox";
 import PieChartBox from "../../components/pieCartBox/PieChartBox";
 import TopBox from "../../components/topBox/TopBox";
+import Cookies from "js-cookie";
 import {
   barChartBoxRevenue,
   barChartBoxVisit,
@@ -12,8 +14,16 @@ import {
   chartBoxUser,
 } from "../../data";
 import "./home.scss";
+import { useEffect } from "react";
 
 const Home = () => {
+  const navigate = useNavigate();
+  useEffect(()=>{
+    if(!Cookies.get("token")){
+      navigate("/signup");
+    }
+
+  }, [])
   return (
     <div className="home">
       <div className="box box2">
@@ -22,18 +32,18 @@ const Home = () => {
       <div className="box box3">
         <ChartBox {...chartBoxProduct} />
       </div>
-      <div className="box box5">
+      {/* <div className="box box5">
         <ChartBox {...chartBoxConversion} />
-      </div>
+      </div> */}
       <div className="box box6">
         <ChartBox {...chartBoxRevenue} />
       </div>
       <div className="box box8">
         <BarChartBox {...barChartBoxVisit} />
       </div>
-      <div className="box box9">
+      {/* <div className="box box9">
         <BarChartBox {...barChartBoxRevenue} />
-      </div>      
+      </div>       */}
       <div className="box box1">
         <TopBox />
       </div>

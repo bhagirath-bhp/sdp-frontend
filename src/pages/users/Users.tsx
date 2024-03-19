@@ -45,18 +45,18 @@ const columns: GridColDef[] = [
     headerName: "Phone",
     width: 200,
   },
-  {
-    field: "createdAt",
-    headerName: "Created At",
-    width: 200,
-    type: "date",
-    valueFormatter: (params) => new Date(params?.value).toDateString(),
-  },
+  // {
+  //   field: "createdAt",
+  //   headerName: "Created At",
+  //   width: 200,
+  //   type: "date",
+  //   valueFormatter: (params) => new Date(params?.value).toDateString(),
+  // },
   {
     field: "verified",
     headerName: "Verified",
     width: 150,
-    type: "boolean",
+    type: "switch",
   },
 ];
 
