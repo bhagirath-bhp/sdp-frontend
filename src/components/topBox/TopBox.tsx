@@ -1,6 +1,10 @@
 import "./topBox.scss"
 import {topDealUsers} from "../../data.ts"
-
+type TopBoxData = {
+  id: number,
+  username: string,
+  amount: number
+}
 const TopBox = () => {
   return (
     <div className="topBox">

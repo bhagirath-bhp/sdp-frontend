@@ -42,6 +42,7 @@ const AddOrderPage = () => {
     }
     setSearchTimeout(newTimeout);
   };
+  
   useEffect(() => {
     const temp = searchItems.map((item: { pname: string }) => {
       return (

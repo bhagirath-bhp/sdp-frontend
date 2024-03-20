@@ -9,12 +9,12 @@ const User = () => {
     <div className="user">
       {/* <Single {...singleUser}/> */}
 
-      {/* <main className="profile-page">
+      <main className="profile-page">
         <section className="relative block h-500-px">
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1499336315816-097655dcfbda?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2710&amp;q=80')"}}
+            backgroundImage: "url('/logo.png')"}}
           >
             <span
               id="blackOverlay"
@@ -131,14 +131,14 @@ const User = () => {
             </div>
           </div>
         </section>
-      </main> */}
-      <main>
+      </main>
+      {/* <main>
         <div className="head">
           <div className="name text-[5xl] font-bold">Parth Savaj</div>
           <div className="profile-photo"></div>
         </div>
         <div className="body"></div>
-      </main>
+      </main> */}
     </div>
   );
 };

@@ -69,6 +69,7 @@ const AllOrdersAdminPage = () => {
           onClick={() => navigate("/order/add")}
           variant="outlined"
           className="btn-gold flex gap-2"
+          placeholder=""
         >
           <img src={AddIcon} alt="" className="h-5" />
           <span className="leading-5">Add Order</span>

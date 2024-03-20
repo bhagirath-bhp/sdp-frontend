@@ -44,7 +44,7 @@ const OrderItem = ({ order, index }) => {
       </td>
       <td className="py-4">
         <div className="dsp m-5">
-          <Button onClick={handleOpen} variant="outlined" className="btn-gold">
+          <Button onClick={handleOpen} variant="outlined" className="btn-gold" placeholder="">
             View Order
           </Button>
           <Dialog
@@ -52,20 +52,22 @@ const OrderItem = ({ order, index }) => {
             handler={handleOpen}
             className="text-2xl"
             size="xl"
+            placeholder=""
           >
-            <DialogHeader className="flex w-full justify-between">
+            <DialogHeader className="flex w-full justify-between" placeholder="">
               <div>Buyer: {order.bname}</div>
               <div>
                 <Button
                   onClick={handleInvoice}
                   variant="outlined"
                   className="btn-gold"
+                  placeholder=""
                 >
                   Download Invoice
                 </Button>
               </div>
             </DialogHeader>
-            <DialogBody>
+            <DialogBody placeholder="">
               <table
                 className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
                 ref={targetRef}
@@ -89,12 +91,13 @@ const OrderItem = ({ order, index }) => {
                 <tbody>{orderItemComponentSet}</tbody>
               </table>
             </DialogBody>
-            <DialogFooter>
+            <DialogFooter placeholder="">
               <Button
                 variant="text"
                 color="red"
                 onClick={handleOpen}
                 className="mr-1"
+                placeholder=""
               >
                 <h3 className="text-base">Cancel</h3>
               </Button>

@@ -166,42 +166,8 @@ export const topDealUsers = [
     email: "augusta@gmail.com",
     amount: "1932",
   },
-  {
-    id: 7,
-    // img: "https://images.pexels.com/photos/874158/pexels-photo-874158.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    username: "Sample Data",
-    email: "angel@gmail.com",
-    amount: "1560",
-  },
-  {
-    id: 8,
-    // img: "https://images.pexels.com/photos/874158/pexels-photo-874158.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    username: "Sample Data",
-    email: "angel@gmail.com",
-    amount: "1560",
-  },
-  {
-    id: 9,
-    // img: "https://images.pexels.com/photos/874158/pexels-photo-874158.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    username: "Sample Data",
-    email: "angel@gmail.com",
-    amount: "1560",
-  },
-  {
-    id: 10,
-    // img: "https://images.pexels.com/photos/874158/pexels-photo-874158.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    username: "Sample Data",
-    email: "angel@gmail.com",
-    amount: "1560",
-  },
-  {
-    id: 11,
-    // img: "https://images.pexels.com/photos/874158/pexels-photo-874158.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    username: "Sample Data",
-    email: "angel@gmail.com",
-    amount: "1560",
-  },
 ];
+
 
 export const chartBoxUser = {
   color: "#8884d8",
@@ -344,6 +310,60 @@ export const barChartBoxVisit = {
     },
   ],
 };
+
+
+export const BigChartBoxData = [
+  {
+    name: "Sun",
+    revenue: 0,
+    clients: 0,
+    products: 0,
+  },
+  {
+    name: "Mon",
+    revenue: 0,
+    clients: 0,
+    products: 0,
+  },
+  {
+    name: "Tue",
+    revenue: 0,
+    clients: 0,
+    products: 0,
+  },
+  {
+    name: "Wed",
+    revenue: 0,
+    clients: 0,
+    products: 0,
+  },
+  {
+    name: "Thu",
+    revenue: 0,
+    clients: 0,
+    products: 0,
+  },
+  {
+    name: "Fri",
+    revenue: 0,
+    clients: 0,
+    products: 0,
+  },
+  {
+    name: "Sat",
+    revenue: 0,
+    clients: 0,
+    products: 0,
+  },
+  
+];
+
+export const InventoryProducts = [
+  // { name: "Mobile", value: 400, color: "#0088FE" },
+  // { name: "Desktop", value: 300, color: "#00C49F" },
+  // { name: "Laptop", value: 300, color: "#FFBB28" },
+  // { name: "Tablet", value: 200, color: "#FF8042" },
+];
 
 export const userRows = [
   {
@@ -701,3 +721,5 @@ export const singleProduct = {
     ],
   },
 };
+
+

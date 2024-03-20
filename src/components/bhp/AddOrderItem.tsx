@@ -46,10 +46,11 @@ interface Product {
     setOrderItems: Function;
   }
 const AddOrderItem = ({ product, orderItems, setOrderItems }: Props) => {
-    const [value, setvalue] = useState(product.quantity);
+    // console.log(product)
+    const [value, setvalue] = useState(product?.quantity);
     useEffect(()=>{
         const updatedOrder = orderItems.map((item)=>{
-            if(item.pid === product.pid){
+            if(item.pid === product?.pid){
                 return {...item, quantity: value}
             }
         })
@@ -63,11 +64,11 @@ const AddOrderItem = ({ product, orderItems, setOrderItems }: Props) => {
     return (
         <ListItem ripple={false}>
             <ListItemPrefix>
-                <Avatar variant="circular" alt="candice" src={product.imageURL || "https://docs.material-tailwind.com/img/face-1.jpg"} />
+                <Avatar variant="circular" alt="candice" src={product?.imageURL || "https://docs.material-tailwind.com/img/face-1.jpg"} />
             </ListItemPrefix>
             <div className="flex items-center">
                 <Typography variant="h6" color="blue-gray">
-                    {product.pname || "something goes here"}
+                    {product?.pname || "something goes here"}
                 </Typography>
                 <CustomCounter value={value} setValue={setvalue}/>
             </div>
