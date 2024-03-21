@@ -1,13 +1,14 @@
 import Cookies from "js-cookie";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { userState } from "../state/recoilState";
 import { Button } from "@material-tailwind/react";
 
 const UserBadge = () => {
     const [userCick, setUserClick] = useState(false);
     const user = useRecoilValue(userState);
+    const setUser = useSetRecoilState(userState);
     return (
         <div className="flex items-center md:order-2 flex-col relative text-black">
             <Button type="button" placeholder="" color="white" className="border-[1px] border-[#A1A1A1] flex items-center gap-[1rem] text-sm focus:ring-1 focus:ring-golden" id="user-menu-button" onClick={() => { (userCick) ? setUserClick(false) : setUserClick(true) }}>
@@ -32,8 +33,9 @@ const UserBadge = () => {
                             to="#"
                             className="block px-4 py-2 text-sm hover:text-golden hover:bg-goldenLight"
                             onClick={() => {
-                                Cookies.remove('user')
-                                Cookies.remove('token')
+                                Cookies.remove("user")
+                                Cookies.remove("token")
+                                setUser("");
                                 window.location.replace("/")
                             }}>Sign out</Link>
                     </li>

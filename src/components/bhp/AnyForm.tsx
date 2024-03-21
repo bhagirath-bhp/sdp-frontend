@@ -9,10 +9,13 @@ import "react-toastify/dist/ReactToastify.css";
 // import { useNavigate } from "react-router-dom";
 import { toUrlEncoded } from "../../utils";
 import { useSignInMutation, useSignUpMutation } from "../../api/user";
+import { useSetRecoilState } from "recoil";
+import { userState } from "../state/recoilState";
 
 const AnyForm: React.FC<FormProps> = ({ fields, formType }) => {
   const [form, setForm] = useState<{ [key: string]: string | File }>({});
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const setUser = useSetRecoilState(userState)
   const signin = useSignInMutation();
   const signup = useSignUpMutation();
   // const navigate = useNavigate();
@@ -41,6 +44,7 @@ const AnyForm: React.FC<FormProps> = ({ fields, formType }) => {
           setIsLoading(false);
           Cookies.set("user", JSON.stringify(response));
           Cookies.set("token", response.token);
+          setUser(response);
           toast.success("Signed up successfully!", {
             position: "top-right",
             autoClose: 1000,
@@ -68,6 +72,7 @@ const AnyForm: React.FC<FormProps> = ({ fields, formType }) => {
           setIsLoading(false);
           Cookies.set("user", JSON.stringify(response));
           Cookies.set("token", response.token);
+          setUser(response);
           toast.success("Signed in successfully!", {
             position: "top-right",
             autoClose: 1000,

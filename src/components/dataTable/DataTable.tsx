@@ -101,9 +101,9 @@ const DataTable = (props: Props) => {
     renderCell: (params) => {
       return (
         <div className="action">
-          <Link to={`/${props.slug}/${params.row.id}`}>
+          {/* <Link to={`/${props.slug}/${params.row.id}`}>
             <img src="/view.svg" alt="" />
-          </Link>
+          </Link> */}
           <div className="delete" onClick={() => {
             handleDelete(params.row.id)
           }}>
