@@ -22,7 +22,7 @@ const Menu = () => {
                       (listItem.onClickFn)?listItem.onClickFn():null;
                     }}
                   >
-                    <img src={listItem.icon} alt="" />
+                    <img src={listItem.icon} alt="" className="brightness-0"/>
                     <span className="listItemTitle">{listItem.title}</span>
                   </Link>
                 );
@@ -38,7 +38,7 @@ const Menu = () => {
                   className="listItem"
                   key={listItem.id}
                 >
-                  <img src={listItem.icon} alt="" />
+                  <img src={listItem.icon} alt="" className="brightness-0"/>
                   <span className="listItemTitle">{listItem.title}</span>
                 </Link>
               );
