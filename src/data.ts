@@ -129,12 +129,12 @@ export const menu = [
 ];
 
 export const topDealUsers = [
-  // {
-  //   id: 1,
-  //   // img: "https://images.pexels.com/photos/8405873/pexels-photo-8405873.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-  //   username: "Harsh Mehta",
-  //   amount: "3668",
-  // },
+  {
+    id: 0,
+    // img: "https://images.pexels.com/photos/8405873/pexels-photo-8405873.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
+    username: "",
+    amount: "",
+  },
   // {
   //   id: 2,
   //   // img: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1600",
@@ -173,17 +173,17 @@ export const chartBoxUser = {
   color: "#8884d8",
   icon: "/userIcon.svg",
   title: "Total Clients",
-  // number: "15",
+  number: "",
   dataKey: "users",
-  // percentage: 45,
+  percentage: 45,
   chartData: [
-    // { name: "Sun", users: 400 },
-    // { name: "Mon", users: 600 },
-    // { name: "Tue", users: 500 },
-    // { name: "Wed", users: 700 },
-    // { name: "Thu", users: 400 },
-    // { name: "Fri", users: 500 },
-    // { name: "Sat", users: 450 },
+    { name: "", users: 0 },
+    { name: "", users: 0 },
+    { name: "", users: 0 },
+    { name: "", users: 0 },
+    { name: "", users: 0 },
+    { name: "", users: 0 },
+    { name: "", users: 0 },
   ],
 };
 
@@ -191,51 +191,51 @@ export const chartBoxProduct = {
   color: "skyblue",
   icon: "/productIcon.svg",
   title: "Total Products",
-  // number: "10",
+  number: "",
   dataKey: "products",
-  // percentage: 21,
+  percentage: 0,
   chartData: [
-    // { name: "Sun", products: 400 },
-    // { name: "Mon", products: 600 },
-    // { name: "Tue", products: 500 },
-    // { name: "Wed", products: 700 },
-    // { name: "Thu", products: 400 },
-    // { name: "Fri", products: 500 },
-    // { name: "Sat", products: 450 },
+    { name: "", products: 0 },
+    { name: "", products: 0 },
+    { name: "", products: 0 },
+    { name: "", products: 0 },
+    { name: "", products: 0 },
+    { name: "", products: 0 },
+    { name: "", products: 0 },
   ],
 };
 export const chartBoxRevenue = {
   color: "teal",
   icon: "/revenueIcon.svg",
   title: "Total Revenue",
-  // number: "₹564320",
+  number: "",
   dataKey: "revenue",
-  // percentage: 12,
+  percentage: 0,
   chartData: [
-    // { name: "Jan", revenue: 400 },
-    // { name: "Feb", revenue: 600 },
-    // { name: "Mar", revenue: 500 },
-    // { name: "April", revenue: 700 },
-    // { name: "May", revenue: 400 },
-    // { name: "June", revenue: 500 },
-    // { name: "July", revenue: 550 },
+    { name: "", revenue: 0 },
+    { name: "", revenue: 0 },
+    { name: "", revenue: 0 },
+    { name: "", revenue: 0 },
+    { name: "", revenue: 0 },
+    { name: "", revenue: 0 },
+    { name: "", revenue: 0 },
   ],
 };
 export const chartBoxConversion = {
   color: "gold",
   icon: "/conversionIcon.svg",
   title: "Total Profit",
-  // number: "₹120000",
+  number: "",
   dataKey: "ratio",
-  // percentage: 12,
+  percentage: 0,
   chartData: [
-    // { name: "Jan", ratio: 400 },
-    // { name: "Feb", ratio: 600 },
-    // { name: "Mar", ratio: 500 },
-    // { name: "April", ratio: 700 },
-    // { name: "May", ratio: 400 },
-    // { name: "June", ratio: 500 },
-    // { name: "July", ratio: 650 },
+    { name: "", ratio: 0 },
+    { name: "", ratio: 0 },
+    { name: "", ratio: 0 },
+    { name: "", ratio: 0 },
+    { name: "", ratio: 0 },
+    { name: "", ratio: 0 },
+    { name: "", ratio: 0 },
   ],
 };
 
@@ -244,34 +244,34 @@ export const barChartBoxRevenue = {
   color: "#8884d8",
   dataKey: "profit",
   chartData: [
-    // {
-    //   name: "Sun",
-    //   profit: 4000,
-    // },
-    // {
-    //   name: "Mon",
-    //   profit: 3000,
-    // },
-    // {
-    //   name: "Tue",
-    //   profit: 2000,
-    // },
-    // {
-    //   name: "Wed",
-    //   profit: 2780,
-    // },
-    // {
-    //   name: "Thu",
-    //   profit: 1890,
-    // },
-    // {
-    //   name: "Fri",
-    //   profit: 2390,
-    // },
-    // {
-    //   name: "Sat",
-    //   profit: 3490,
-    // },
+    {
+      name: "",
+      profit: 0,
+    },
+    {
+      name: "",
+      profit: 0,
+    },
+    {
+      name: "",
+      profit: 0,
+    },
+    {
+      name: "",
+      profit: 0,
+    },
+    {
+      name: "",
+      profit: 0,
+    },
+    {
+      name: "",
+      profit: 0,
+    },
+    {
+      name: "",
+      profit: 0,
+    },
   ],
 };
 
@@ -280,81 +280,81 @@ export const barChartBoxVisit = {
   color: "#FF8042",
   dataKey: "sales",
   chartData: [
-    // {
-    //   name: "Sun",
-    //   sales: 4000,
-    // },
-    // {
-    //   name: "Mon",
-    //   sales: 3000,
-    // },
-    // {
-    //   name: "Tue",
-    //   sales: 2000,
-    // },
-    // {
-    //   name: "Wed",
-    //   sales: 2780,
-    // },
-    // {
-    //   name: "Thu",
-    //   sales: 1890,
-    // },
-    // {
-    //   name: "Fri",
-    //   sales: 2390,
-    // },
-    // {
-    //   name: "Sat",
-    //   sales: 3490,
-    // },
+    {
+      name: "",
+      sales: 0,
+    },
+    {
+      name: "",
+      sales: 0,
+    },
+    {
+      name: "",
+      sales: 0,
+    },
+    {
+      name: "",
+      sales: 0,
+    },
+    {
+      name: "",
+      sales: 0,
+    },
+    {
+      name: "",
+      sales: 0,
+    },
+    {
+      name: "",
+      sales: 0,
+    },
   ],
 };
 
 
 export const BigChartBoxData = [
-  // {
-  //   name: "Sun",
-  //   revenue: 0,
-  //   clients: 0,
-  //   products: 0,
-  // },
-  // {
-  //   name: "Mon",
-  //   revenue: 0,
-  //   clients: 0,
-  //   products: 0,
-  // },
-  // {
-  //   name: "Tue",
-  //   revenue: 0,
-  //   clients: 0,
-  //   products: 0,
-  // },
-  // {
-  //   name: "Wed",
-  //   revenue: 0,
-  //   clients: 0,
-  //   products: 0,
-  // },
-  // {
-  //   name: "Thu",
-  //   revenue: 0,
-  //   clients: 0,
-  //   products: 0,
-  // },
-  // {
-  //   name: "Fri",
-  //   revenue: 0,
-  //   clients: 0,
-  //   products: 0,
-  // },
-  // {
-  //   name: "Sat",
-  //   revenue: 0,
-  //   clients: 0,
-  //   products: 0,
-  // },
+  {
+    name: "",
+    revenue: 0,
+    clients: 0,
+    products: 0,
+  },
+  {
+    name: "",
+    revenue: 0,
+    clients: 0,
+    products: 0,
+  },
+  {
+    name: "",
+    revenue: 0,
+    clients: 0,
+    products: 0,
+  },
+  {
+    name: "",
+    revenue: 0,
+    clients: 0,
+    products: 0,
+  },
+  {
+    name: "",
+    revenue: 0,
+    clients: 0,
+    products: 0,
+  },
+  {
+    name: "",
+    revenue: 0,
+    clients: 0,
+    products: 0,
+  },
+  {
+    name: "",
+    revenue: 0,
+    clients: 0,
+    products: 0,
+  },
   
 ];
 
