@@ -56,11 +56,11 @@ function App() {
     {
       path: "/",
       element: (
-        <ErrorBoundary>
+        // <ErrorBoundary>
           <ScrollToTop>
             <Layout />
           </ScrollToTop>
-        </ErrorBoundary>
+        // </ErrorBoundary>
       ),
       children: [
         {

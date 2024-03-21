@@ -6,7 +6,7 @@ import Cookies from "js-cookie";
 // import { ErrorResponse, SuccessResponse } from "../interfaces";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { toUrlEncoded } from "../../utils";
 import { useSignInMutation, useSignUpMutation } from "../../api/user";
 
@@ -34,6 +34,7 @@ const AnyForm: React.FC<FormProps> = ({ fields, formType }) => {
       }
     }
     if (formType === "signup") {
+
       setTimeout(async () => {
         const response = await signup.mutateAsync(formData);
         if ("success" in response) {
@@ -59,8 +60,10 @@ const AnyForm: React.FC<FormProps> = ({ fields, formType }) => {
         }
       }, 1000);
     } else if (formType === "signin") {
+      console.log(form)
       setTimeout(async () => {
         const response = await signin.mutateAsync(toUrlEncoded(form));
+        console.log(response)
         if ("success" in response) {
           setIsLoading(false);
           Cookies.set("user", JSON.stringify(response));

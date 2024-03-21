@@ -2,16 +2,43 @@
 
 .single {
   display: flex;
-
+  overflow: hidden;
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  
   @include xl{
     flex-direction: column;
     gap: 50px;
   }
-
+  
   .view {
     flex: 1;
-
+    
+    .cover-container{
+      max-height: 10rem;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
     .info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      
+      .profile-image-container{
+        border: 10px solid #fff;
+        height: 10rem;
+        width: 10rem;
+        border-radius: 50%;
+        background-position: center;
+        background-size: cover;
+        position: absolute;
+        top: 0;
+        
+      }
       .topInfo {
         display: flex;
         align-items: center;

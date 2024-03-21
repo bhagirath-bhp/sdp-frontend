@@ -73,20 +73,25 @@ const Home = () => {
         item.products = productsCount.productsCountLastSeven[index];
         item.revenue = ordersCount.ordersCountLastSeven[index];
       })
-      products.forEach((item: {name: string, value: string, color: string}) => {
-        InventoryProducts.push({ name: item.pname, value: item.price, color: "#0088FE" });
+      products.forEach((item: {id: string, pname: string, price: number}) => {
+        const itemExists = InventoryProducts.some(product => product.id === item.id);
+        if (!itemExists) {
+          InventoryProducts.push({id: item.id, name: item.pname, value: item.price, color: "#0088FE" });
+        }
       });
       topDealUsers.forEach((item,index)=>{
-        item.amount = orders[index].totalAmount;
-        item.username = orders[index].bname;
+        item.amount = orders[index]?.totalAmount;
+        item.username = orders[index]?.bname;
       })
     }
     fetchClientsCount();
   }, [])
-  setTimeout(()=>{
-    setBigChartBoxPlaceholder(<BigChartBox data={BigChartBoxData}/>)
-    setPieChartBoxPlaceholder(<PieChartBox />)
-  }, 300)
+  useEffect(()=>{
+    setTimeout(()=>{
+      setBigChartBoxPlaceholder(<BigChartBox data={BigChartBoxData}/>)
+      setPieChartBoxPlaceholder(<PieChartBox />)
+    }, 1000)
+  }, [InventoryProducts])
   return (
     <div className="home">
       <div className="box box2">

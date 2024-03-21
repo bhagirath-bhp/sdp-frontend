@@ -7,7 +7,9 @@
 //   XAxis,
 //   YAxis,
 // } from "recharts";
+import { useRecoilValue } from "recoil";
 import "./single.scss";
+import { userState } from "../state/recoilState";
 
 type Props = {
   id: number;
@@ -22,10 +24,34 @@ type Props = {
 };
 
 const Single = (props: Props) => {
+  const user = useRecoilValue(userState);
+  console.log(user)
   return (
     <div className="single">
       <div className="view">
         <div className="info">
+          <div className="cover-container">
+            <img src={user.profileURL}/>
+          </div>
+          <div className="details">
+              <div className="profile-image-container"style={{backgroundImage: `url(${user.profileURL})`}}>
+                {/* <img src={user.profileURL} /> */}
+              </div>
+              <div className="item">
+                <span className="itemTitle">Name: </span>
+                <span className="itemValue"> {user.name}</span>
+              </div>
+              <div className="item">
+                <span className="itemTitle">Email: </span>
+                <span className="itemValue"> {user.email}</span>
+              </div>
+              <div className="item">
+                <span className="itemTitle">Status: </span>
+                <span className="itemValue"> {user.status}</span>
+              </div>
+          </div>
+        </div>
+        {/* <div className="info">
           <div className="topInfo">
             {props.img && <img src={props.img} alt="" />}
             <h1>{props.title}</h1>
@@ -39,7 +65,7 @@ const Single = (props: Props) => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
         <hr />
       </div>
     </div>

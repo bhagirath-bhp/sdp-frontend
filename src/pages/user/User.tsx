@@ -7,9 +7,9 @@ const User = () => {
 
   return (
     <div className="user">
-      {/* <Single {...singleUser}/> */}
+      <Single {...singleUser}/>
 
-      <main className="profile-page">
+      {/* <main className="profile-page">
         <section className="relative block h-500-px">
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
@@ -131,7 +131,7 @@ const User = () => {
             </div>
           </div>
         </section>
-      </main>
+      </main> */}
       {/* <main>
         <div className="head">
           <div className="name text-[5xl] font-bold">Parth Savaj</div>
