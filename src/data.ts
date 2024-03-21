@@ -177,13 +177,13 @@ export const chartBoxUser = {
   dataKey: "users",
   percentage: 45,
   chartData: [
-    { name: "Sun", users: 400 },
-    { name: "Mon", users: 600 },
-    { name: "Tue", users: 500 },
-    { name: "Wed", users: 700 },
-    { name: "Thu", users: 400 },
-    { name: "Fri", users: 500 },
-    { name: "Sat", users: 450 },
+    // { name: "Sun", users: 400 },
+    // { name: "Mon", users: 600 },
+    // { name: "Tue", users: 500 },
+    // { name: "Wed", users: 700 },
+    // { name: "Thu", users: 400 },
+    // { name: "Fri", users: 500 },
+    // { name: "Sat", users: 450 },
   ],
 };
 
@@ -195,13 +195,13 @@ export const chartBoxProduct = {
   dataKey: "products",
   percentage: 21,
   chartData: [
-    { name: "Sun", products: 400 },
-    { name: "Mon", products: 600 },
-    { name: "Tue", products: 500 },
-    { name: "Wed", products: 700 },
-    { name: "Thu", products: 400 },
-    { name: "Fri", products: 500 },
-    { name: "Sat", products: 450 },
+    // { name: "Sun", products: 400 },
+    // { name: "Mon", products: 600 },
+    // { name: "Tue", products: 500 },
+    // { name: "Wed", products: 700 },
+    // { name: "Thu", products: 400 },
+    // { name: "Fri", products: 500 },
+    // { name: "Sat", products: 450 },
   ],
 };
 export const chartBoxRevenue = {
@@ -212,13 +212,13 @@ export const chartBoxRevenue = {
   dataKey: "revenue",
   percentage: 12,
   chartData: [
-    { name: "Jan", revenue: 400 },
-    { name: "Feb", revenue: 600 },
-    { name: "Mar", revenue: 500 },
-    { name: "April", revenue: 700 },
-    { name: "May", revenue: 400 },
-    { name: "June", revenue: 500 },
-    { name: "July", revenue: 550 },
+    // { name: "Jan", revenue: 400 },
+    // { name: "Feb", revenue: 600 },
+    // { name: "Mar", revenue: 500 },
+    // { name: "April", revenue: 700 },
+    // { name: "May", revenue: 400 },
+    // { name: "June", revenue: 500 },
+    // { name: "July", revenue: 550 },
   ],
 };
 export const chartBoxConversion = {
@@ -229,13 +229,13 @@ export const chartBoxConversion = {
   dataKey: "ratio",
   percentage: 12,
   chartData: [
-    { name: "Jan", ratio: 400 },
-    { name: "Feb", ratio: 600 },
-    { name: "Mar", ratio: 500 },
-    { name: "April", ratio: 700 },
-    { name: "May", ratio: 400 },
-    { name: "June", ratio: 500 },
-    { name: "July", ratio: 650 },
+    // { name: "Jan", ratio: 400 },
+    // { name: "Feb", ratio: 600 },
+    // { name: "Mar", ratio: 500 },
+    // { name: "April", ratio: 700 },
+    // { name: "May", ratio: 400 },
+    // { name: "June", ratio: 500 },
+    // { name: "July", ratio: 650 },
   ],
 };
 
@@ -244,34 +244,34 @@ export const barChartBoxRevenue = {
   color: "#8884d8",
   dataKey: "profit",
   chartData: [
-    {
-      name: "Sun",
-      profit: 4000,
-    },
-    {
-      name: "Mon",
-      profit: 3000,
-    },
-    {
-      name: "Tue",
-      profit: 2000,
-    },
-    {
-      name: "Wed",
-      profit: 2780,
-    },
-    {
-      name: "Thu",
-      profit: 1890,
-    },
-    {
-      name: "Fri",
-      profit: 2390,
-    },
-    {
-      name: "Sat",
-      profit: 3490,
-    },
+    // {
+    //   name: "Sun",
+    //   profit: 4000,
+    // },
+    // {
+    //   name: "Mon",
+    //   profit: 3000,
+    // },
+    // {
+    //   name: "Tue",
+    //   profit: 2000,
+    // },
+    // {
+    //   name: "Wed",
+    //   profit: 2780,
+    // },
+    // {
+    //   name: "Thu",
+    //   profit: 1890,
+    // },
+    // {
+    //   name: "Fri",
+    //   profit: 2390,
+    // },
+    // {
+    //   name: "Sat",
+    //   profit: 3490,
+    // },
   ],
 };
 
@@ -280,81 +280,81 @@ export const barChartBoxVisit = {
   color: "#FF8042",
   dataKey: "sales",
   chartData: [
-    {
-      name: "Sun",
-      sales: 4000,
-    },
-    {
-      name: "Mon",
-      sales: 3000,
-    },
-    {
-      name: "Tue",
-      sales: 2000,
-    },
-    {
-      name: "Wed",
-      sales: 2780,
-    },
-    {
-      name: "Thu",
-      sales: 1890,
-    },
-    {
-      name: "Fri",
-      sales: 2390,
-    },
-    {
-      name: "Sat",
-      sales: 3490,
-    },
+    // {
+    //   name: "Sun",
+    //   sales: 4000,
+    // },
+    // {
+    //   name: "Mon",
+    //   sales: 3000,
+    // },
+    // {
+    //   name: "Tue",
+    //   sales: 2000,
+    // },
+    // {
+    //   name: "Wed",
+    //   sales: 2780,
+    // },
+    // {
+    //   name: "Thu",
+    //   sales: 1890,
+    // },
+    // {
+    //   name: "Fri",
+    //   sales: 2390,
+    // },
+    // {
+    //   name: "Sat",
+    //   sales: 3490,
+    // },
   ],
 };
 
 
 export const BigChartBoxData = [
-  {
-    name: "Sun",
-    revenue: 0,
-    clients: 0,
-    products: 0,
-  },
-  {
-    name: "Mon",
-    revenue: 0,
-    clients: 0,
-    products: 0,
-  },
-  {
-    name: "Tue",
-    revenue: 0,
-    clients: 0,
-    products: 0,
-  },
-  {
-    name: "Wed",
-    revenue: 0,
-    clients: 0,
-    products: 0,
-  },
-  {
-    name: "Thu",
-    revenue: 0,
-    clients: 0,
-    products: 0,
-  },
-  {
-    name: "Fri",
-    revenue: 0,
-    clients: 0,
-    products: 0,
-  },
-  {
-    name: "Sat",
-    revenue: 0,
-    clients: 0,
-    products: 0,
-  },
+  // {
+  //   name: "Sun",
+  //   revenue: 0,
+  //   clients: 0,
+  //   products: 0,
+  // },
+  // {
+  //   name: "Mon",
+  //   revenue: 0,
+  //   clients: 0,
+  //   products: 0,
+  // },
+  // {
+  //   name: "Tue",
+  //   revenue: 0,
+  //   clients: 0,
+  //   products: 0,
+  // },
+  // {
+  //   name: "Wed",
+  //   revenue: 0,
+  //   clients: 0,
+  //   products: 0,
+  // },
+  // {
+  //   name: "Thu",
+  //   revenue: 0,
+  //   clients: 0,
+  //   products: 0,
+  // },
+  // {
+  //   name: "Fri",
+  //   revenue: 0,
+  //   clients: 0,
+  //   products: 0,
+  // },
+  // {
+  //   name: "Sat",
+  //   revenue: 0,
+  //   clients: 0,
+  //   products: 0,
+  // },
   
 ];
 

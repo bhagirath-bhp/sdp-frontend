@@ -53,26 +53,46 @@ const Home = () => {
       chartBoxProduct.number = productsCount.productsCountLastSeven.reduce((accumulator: number, currentValue: number) => accumulator + currentValue, 0);
       chartBoxRevenue.number = ordersCount.ordersCountLastSeven.reduce((accumulator: number, currentValue: number) => accumulator + currentValue, 0);      
       chartBoxUser.chartData.forEach((item, index)=>{
-        item.name = clientsCount.clientsCountTimelineLastSeven[index];
-        item.users = clientsCount.clientsCountLastSeven[index];
+        const itemExists = chartBoxUser.chartData.some(user => user.id === user.id);
+        if (!itemExists) {
+          chartBoxUser.chartData.push({id: item.id, name: clientsCount.clientsCountTimelineLastSeven[index], users: clientsCount.clientsCountLastSeven[index] });
+        }
+        // item.name = clientsCount.clientsCountTimelineLastSeven[index];
+        // item.users = clientsCount.clientsCountLastSeven[index];
       })
       chartBoxProduct.chartData.forEach((item, index)=>{
-        item.name = productsCount.productsCountTimelineLastSeven[index];
-        item.products = productsCount.productsCountLastSeven[index];
+        const itemExists = chartBoxProduct.chartData.some(user => user.id === user.id);
+        if (!itemExists) {
+          chartBoxProduct.chartData.push({id: item.id, name: productsCount.productsCountTimelineLastSeven[index], products: productsCount.productsCountLastSeven[index] });
+        }
+        // item.name = productsCount.productsCountTimelineLastSeven[index];
+        // item.products = productsCount.productsCountLastSeven[index];
       })
       chartBoxRevenue.chartData.forEach((item, index)=>{
-        item.name = ordersCount.ordersCountTimelineLastSeven[index];
-        item.revenue = ordersCount.ordersCountLastSeven[index];
+        const itemExists = chartBoxRevenue.chartData.some(user => user.id === user.id);
+        if (!itemExists) {
+          chartBoxRevenue.chartData.push({id: item.id, name: ordersCount.ordersCountTimelineLastSeven[index], revenue: ordersCount.ordersCountLastSeven[index] });
+        }
+        // item.name = ordersCount.ordersCountTimelineLastSeven[index];
+        // item.revenue = ordersCount.ordersCountLastSeven[index];
       })
       barChartBoxVisit.chartData.forEach((item, index) => {
-        item.name = ordersCount.ordersCountTimelineLastSeven[index];
-        item.sales = ordersCount.ordersCountLastSeven[index]
+        const itemExists = barChartBoxVisit.chartData.some(user => user.id === user.id);
+        if (!itemExists) {
+          barChartBoxVisit.chartData.push({id: item.id, name: ordersCount.ordersCountTimelineLastSeven[index], sales: ordersCount.ordersCountLastSeven[index] });
+        }
+        // item.name = ordersCount.ordersCountTimelineLastSeven[index];
+        // item.sales = ordersCount.ordersCountLastSeven[index]
       })
       BigChartBoxData.forEach((item,index)=>{
-        item.name = productsCount.productsCountTimelineLastSeven[index];
-        item.clients = clientsCount.clientsCountLastSeven[index];
-        item.products = productsCount.productsCountLastSeven[index];
-        item.revenue = ordersCount.ordersCountLastSeven[index];
+        const itemExists = chartBoxProduct.chartData.some(user => user.id === user.id);
+        if (!itemExists) {
+          BigChartBoxData.push({id: item.id, name: productsCount.productsCountTimelineLastSeven[index], clients: clientsCount.clientsCountLastSeven[index], products: productsCount.productsCountLastSeven[index], revenue: ordersCount.ordersCountLastSeven[index]});
+        }
+        // item.name = productsCount.productsCountTimelineLastSeven[index];
+        // item.clients = clientsCount.clientsCountLastSeven[index];
+        // item.products = productsCount.productsCountLastSeven[index];
+        // item.revenue = ordersCount.ordersCountLastSeven[index];
       })
       products.forEach((item: {id: string, pname: string, price: string}) => {
         const itemExists = InventoryProducts.some(product => product.id === item.id);

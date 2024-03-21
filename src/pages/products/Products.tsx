@@ -10,13 +10,13 @@ import Handler from "../../components/state/handler";
 
 const columns: GridColDef[] = [
   // { field: "id", headerName: "ID", width: 90 },
-  {
-    field: "image",
-    headerName: "Image",
-    width: 150,
-    type: "file",
-    renderCell: (params) => <img src={params.value} />
-  },
+  // {
+  //   field: "image",
+  //   headerName: "Image",
+  //   width: 150,
+  //   type: "file",
+  //   renderCell: (params) => <img src={params.value} />
+  // },
   {
     field: "pname",
     type: "string",

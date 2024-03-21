@@ -7,7 +7,7 @@ function LandingPage() {
   const [showMenu, setShowMenu] = useState(false);
   const navigationList = ["Home", "About us", "Services", "Contact Us"];
   return (
-    <div className="bg-white">
+    <div className="bg-white h-full">
       <div className="overflow-hidden">
         <nav className="px-5 sm:px-[50px] py-[26.36px] flex justify-between items-center relative max-w-screen-2xl mx-auto">
           <ul className="h-10 w-12 block md:hidden">
