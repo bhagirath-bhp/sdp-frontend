@@ -47,7 +47,7 @@ const Single = (props: Props) => {
               </div>
               <div className="item">
                 <span className="itemTitle">Status: </span>
-                <span className="itemValue"> {user.status}</span>
+                <span className="itemValue"> {user.status || "Not verified"}</span>
               </div>
           </div>
         </div>
@@ -66,7 +66,7 @@ const Single = (props: Props) => {
             ))}
           </div>
         </div> */}
-        <hr />
+        {/* <hr /> */}
       </div>
     </div>
   );
