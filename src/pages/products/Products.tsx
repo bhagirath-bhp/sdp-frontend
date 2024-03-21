@@ -10,13 +10,20 @@ import Handler from "../../components/state/handler";
 
 const columns: GridColDef[] = [
   // { field: "id", headerName: "ID", width: 90 },
-  // {
-  //   field: "image",
-  //   headerName: "Image",
-  //   width: 150,
-  //   type: "file",
-  //   renderCell: (params) => <img src={params.value} />
-  // },
+  {
+    field: "image",
+    headerName: "Image",
+    width: 150,
+    type: "file",
+    renderCell: (params) => {
+      // Check if params.value exists
+      if (params.value) {
+        return <img src={params.value} alt="Image" />;
+      } else {
+        return null; // Or you can render a placeholder image or text
+      }
+    }
+  },
   {
     field: "pname",
     type: "string",
@@ -64,6 +71,7 @@ const columns: GridColDef[] = [
 
 const Products = () => {
   const [open, setOpen] = useState(false);
+  
 
   return (
     <>
