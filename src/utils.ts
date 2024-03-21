@@ -8,3 +8,9 @@ export const toUrlEncoded = (obj: any): string => {
   }
   return parts.join("&");
 };
+
+
+export const generateRandomColor = () => {
+  const color = '#' + Math.floor(Math.random() * 16777215).toString(16);
+  return color;
+}

@@ -23,6 +23,7 @@ import { useRecoilValue } from "recoil";
 import { userState } from "../../components/state/recoilState";
 import { getOrderMutation } from "../../api/order";
 import { getProductMutation } from "../../api/products";
+import { generateRandomColor } from "../../utils";
 
 
 
@@ -76,7 +77,7 @@ const Home = () => {
       products.forEach((item: {id: string, pname: string, price: string}) => {
         const itemExists = InventoryProducts.some(product => product.id === item.id);
         if (!itemExists) {
-          InventoryProducts.push({id: item.id, name: item.pname, value: parseInt(item.price), color: "#0088FE" });
+          InventoryProducts.push({id: item.id, name: item.pname, value: parseInt(item.price), color: generateRandomColor() });
         }
       });
       topDealUsers.forEach((item,index)=>{
