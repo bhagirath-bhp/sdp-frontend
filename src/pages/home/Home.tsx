@@ -73,10 +73,10 @@ const Home = () => {
         item.products = productsCount.productsCountLastSeven[index];
         item.revenue = ordersCount.ordersCountLastSeven[index];
       })
-      products.forEach((item: {id: string, pname: string, price: number}) => {
+      products.forEach((item: {id: string, pname: string, price: string}) => {
         const itemExists = InventoryProducts.some(product => product.id === item.id);
         if (!itemExists) {
-          InventoryProducts.push({id: item.id, name: item.pname, value: item.price, color: "#0088FE" });
+          InventoryProducts.push({id: item.id, name: item.pname, value: parseInt(item.price), color: "#0088FE" });
         }
       });
       topDealUsers.forEach((item,index)=>{
