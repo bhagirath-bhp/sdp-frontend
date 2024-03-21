@@ -160,6 +160,7 @@ const Home = () => {
         item.amount = orders[index]?.totalAmount;
         item.username = orders[index]?.bname;
       });
+      topDealUsers.sort((a, b) => b.amount - a.amount);
     };
     fetchClientsCount();
   }, []);
