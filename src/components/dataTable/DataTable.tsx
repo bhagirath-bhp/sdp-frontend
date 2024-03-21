@@ -7,7 +7,7 @@ import "./dataTable.scss";
 import { Link } from "react-router-dom";
 import { deleteClientMutation, getClientsMutation } from "../../api/client";
 import { useEffect, useState } from "react";
-import { PaginationInterface } from "../../interfaces";
+// import { PaginationInterface } from "../../interfaces";
 import { deleteProductMutation, getProductMutation } from "../../api/products";
 import { userState } from "../state/recoilState";
 import { useRecoilValue } from "recoil";
@@ -27,7 +27,7 @@ const DataTable = (props: Props) => {
   const getProducts =  getProductMutation();
   const deleteProduct =  deleteProductMutation();
   const deleteClient =  deleteClientMutation();
-  const [pagination, setPagination] = useState<PaginationInterface>({pageNo: 0, pageSize: 10})
+  // const [pagination, setPagination] = useState<PaginationInterface>({pageNo: 0, pageSize: 10})
   const [dataRows, setDataRows] = useState([]);
   const user = useRecoilValue(userState);
 
@@ -57,7 +57,7 @@ const DataTable = (props: Props) => {
       const response = await deleteClient.mutateAsync(slugId);
       console.log(response)
       if(response.success){
-        const updateData = dataRows.filter(item => item.id != slugId);
+        const updateData = dataRows.filter((item: {id:string}) => item.id != slugId);
         setDataRows(updateData);
         toast.success(response.message, {
           position: "top-right",
@@ -76,7 +76,7 @@ const DataTable = (props: Props) => {
     else if(props.slug==="products"){
       const response = await deleteProduct.mutateAsync(slugId);
       if(response.success){
-        const updateData = dataRows.filter(item => item.id != slugId)
+        const updateData = dataRows.filter((item: {id: string}) => item.id != slugId)
         setDataRows(updateData);
         toast.success(response.message, {
           position: "top-right",

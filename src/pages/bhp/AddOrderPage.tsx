@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 const AddOrderPage = () => {
   const [buyerName, setBuyerName] = useState("");
   const [searchText, setSearchText] = useState("");
-  const [searchTimeout, setSearchTimeout] = useState(10);
+  const [searchTimeout, setSearchTimeout] = useState<NodeJS.Timeout | undefined>(undefined);
   const [searchItems, setSearchItems] = useState([]);
   const [searchProductSet, setSearchProductSet] = useState<JSX.Element[]>([]);
   const [orderItems, setOrderItems] = useState([]);
@@ -27,24 +27,25 @@ const AddOrderPage = () => {
   const handleNameChange = (e: { target: { value: string } }) => {
     setBuyerName(e.target.value);
   };
-  const handleSearchChange = (e: any) => {
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.target.value);
-    let newTimeout = 0;
+    let newTimeout: NodeJS.Timeout | undefined = undefined; // Initialize newTimeout with undefined
     clearTimeout(searchTimeout);
     if (e.target.value.length > 2) {
-      newTimeout = setTimeout(async () => {
-        const query = { userId: user.userId, name: searchText };
-        const response = await search.mutateAsync(query);
-        setSearchItems(response);
-      }, 100);
+        newTimeout = setTimeout(async () => {
+            const query = { userId: user.userId, name: searchText };
+            const response = await search.mutateAsync(query);
+            setSearchItems(response);
+        }, 100);
     } else {
-      setSearchItems([]);
+        setSearchItems([]);
     }
-    setSearchTimeout(newTimeout);
-  };
+    setSearchTimeout(newTimeout as NodeJS.Timeout); // Assert newTimeout as NodeJS.Timeout
+};
+
   
   useEffect(() => {
-    const temp = searchItems.map((item: { pname: string }) => {
+    const temp = searchItems.map((item: { pname: string, _id: string, price: number, imageURL: string }) => {
       return (
         <SearchItem
           product={item}
@@ -67,7 +68,7 @@ const AddOrderPage = () => {
     setOrderItemsset(temp);
   }, [orderItems]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     setIsBtnLoading(true);
     e.preventDefault();
 
@@ -137,10 +138,10 @@ const AddOrderPage = () => {
               Search Products
             </label>
             <div>
-              <Input label="search" onChange={handleSearchChange} />
+              <Input label="search" onChange={handleSearchChange} crossOrigin=""/>
             </div>
             <Card className="w-96]" placeholder="hii">
-              <List>{searchProductSet}</List>
+              <List placeholder="">{searchProductSet}</List>
             </Card>
           </div>
           <div className="mb-2">
@@ -151,7 +152,7 @@ const AddOrderPage = () => {
               Order Products
             </label>
             <Card className="w-96]" placeholder="hii">
-              <List>
+              <List placeholder="">
                 {/* <AddOrderItem />
                 <AddOrderItem />
                 <AddOrderItem /> */}
@@ -164,6 +165,7 @@ const AddOrderPage = () => {
             variant="outlined"
             className="bg-golden text-sm"
             loading={isBtnLoading}
+            placeholder=""
           >
             Add Order
           </Button>

@@ -1,8 +1,8 @@
 // import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
+// import Slider from "react-slick";
 import classNames from "classnames";
-import { useRef, useState } from "react";
+import { useState } from "react";
 function LandingPage() {
   const [showMenu, setShowMenu] = useState(false);
   const navigationList = ["Home", "About us", "Services", "Contact Us"];

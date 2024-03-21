@@ -1,19 +1,22 @@
-import { Button } from "@material-tailwind/react"
-import { useState } from "react"
+// import { Button } from "@material-tailwind/react"
+// import { useState } from "react"
 
-const OrderProductItem = ({ id, pname, quantity, price }) => {
-    const [btnState, setBtnState] = useState("Remove");
-    const [btnColor, setBtnColor] = useState("golden")
-    const handleClick = () => {
-        if (btnState === "Remove") {
-            setBtnState("Confirm?")
-            setBtnColor("green");
-        }
-        else {
-            setBtnState("Remove")
-            setBtnColor("golden");
-        }
-    }
+const OrderProductItem = (props: { id: number | string, pname: string, quantity: number | string, price: number | string }) => {
+    // const {id, pname, quantity, price} = props;
+    const {pname, quantity, price} = props;
+    
+    // const [btnState, setBtnState] = useState("Remove");
+    // const [btnColor, setBtnColor] = useState("golden");
+    // const handleClick = () => {
+    //     if (btnState === "Remove") {
+    //         setBtnState("Confirm?")
+    //         setBtnColor("green");
+    //     }
+    //     else {
+    //         setBtnState("Remove")
+    //         setBtnColor("golden");
+    //     }
+    // }
     return (
         <tr>
             <td className="p-4">

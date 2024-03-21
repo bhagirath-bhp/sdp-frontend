@@ -9,7 +9,8 @@ import OrderProductItem from "./OrderProductItem";
 import { useEffect, useRef, useState } from "react";
 import generatePDF from "react-to-pdf";
 
-const OrderItem = ({ order, index }) => {
+const OrderItem = (props: { order: any, index: any }) => {
+  const {order, index} = props;
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(!open);
   const targetRef = useRef(null);
@@ -18,7 +19,7 @@ const OrderItem = ({ order, index }) => {
   }, []);
   const orderItems = order.products;
   // const uname = order.user.first_name + ' ' + order.user.last_name;
-  const orderItemComponentSet = orderItems.map((data, index) => (
+  const orderItemComponentSet = orderItems.map((data: any, index: any) => (
     <OrderProductItem
       key={index}
       id={data.id}

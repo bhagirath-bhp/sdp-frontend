@@ -49,10 +49,10 @@ const Add = (props: Props) => {
               theme: "light",
             });
           }
-        } catch (error) {
+        } catch (error: { message: string} | any) {
           setIsLoading(false);
           console.error("Error adding client:", error);
-          const { message } = error;
+          const message = error?.message;
           toast.error(message || "An error occurred", {
             position: "top-right",
             autoClose: 1200,
@@ -66,7 +66,11 @@ const Add = (props: Props) => {
       const formData = new FormData();
       for (let key in form) {
         if (form.hasOwnProperty(key)) {
-          formData.append(key, form[key]);
+          const value = form[key];
+          // Check if the value is a Date object and convert it to a string if necessary
+          const valueToAdd =
+            value instanceof Date ? value.toISOString() : value;
+          formData.append(key, valueToAdd);
         }
       }
 
@@ -82,10 +86,10 @@ const Add = (props: Props) => {
               theme: "light",
             });
           }
-        } catch (error) {
+        } catch (error: { message: string} | any) {
           console.error("Error adding product:", error);
           setIsLoading(false);
-          const { message } = error;
+          const message = error?.message;
           toast.error(message || "An error occurred", {
             position: "top-right",
             autoClose: 1200,
@@ -109,7 +113,7 @@ const Add = (props: Props) => {
           <h1>Add new {props.slug}</h1>
           <form onSubmit={handleSubmit}>
             {props.columns
-              .filter((item) => item.field !== "id" && item.field !== "img")
+              .filter((item) => item?.field !== "id" && item?.field !== "img")
               .map((column) => (
                 <div className="item" key={column.field}>
                   <label>{column.headerName}</label>

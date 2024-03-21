@@ -15,7 +15,7 @@ import AllOrdersAdminPage from "./pages/bhp/AllOrdersAdminPage";
 import AddOrderPage from "./pages/bhp/AddOrderPage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import TasksPage from "./pages/bhp/TasksPage";
-import Handler from "./components/state/handler";
+// import Handler from "./components/state/handler";
 import { RecoilRoot } from "recoil";
 import ErrorBoundary from "./pages/bhp/ErrorBoundary";
 import ComingSoon from "./pages/bhp/ComingSoon";

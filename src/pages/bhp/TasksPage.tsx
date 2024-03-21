@@ -2,7 +2,7 @@ import { IconButton, Input } from "@material-tailwind/react";
 import TaskItem from "../../components/bhp/TaskItem";
 import { IoIosAdd } from "react-icons/io";
 import { addTaskMutation, getTaskMutation } from "../../api/task";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, ReactNode, useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import Handler from "../../components/state/handler";
 
@@ -11,10 +11,10 @@ const TasksPage = () => {
   const [task, setTask] = useState({ title: "" });
   const [taskset, setTaskset] = useState([]);
   const [taskCompletedset, setTaskCompletedset] = useState<
-    (Element | JSX.Element)[]
+    (ReactNode)[]
   >([]);
   const [taskPendingset, setTaskPendingset] = useState<
-    (Element | JSX.Element)[]
+    (ReactNode)[]
   >([]);
   const addTask = addTaskMutation();
   const getTask = getTaskMutation();
@@ -79,7 +79,7 @@ const TasksPage = () => {
     }
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     setTask({ title: e.target.value });
   };
 
@@ -87,8 +87,8 @@ const TasksPage = () => {
     <div>
       <Handler/>
       <div className="flex gap-2">
-        <Input label="Add task" value={task.title} onChange={handleChange} />
-        <IconButton size="md" onClick={handleSubmit}>
+        <Input label="Add task" value={task.title} onChange={handleChange} crossOrigin=""/>
+        <IconButton size="md" onClick={handleSubmit} placeholder="">
           <IoIosAdd className="text-white" fontSize="2rem" />
         </IconButton>
       </div>

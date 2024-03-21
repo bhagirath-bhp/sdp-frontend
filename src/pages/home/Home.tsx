@@ -8,9 +8,9 @@ import Cookies from "js-cookie";
 import {
   BigChartBoxData,
   InventoryProducts,
-  barChartBoxRevenue,
+  // barChartBoxRevenue,
   barChartBoxVisit,
-  chartBoxConversion,
+  // chartBoxConversion,
   chartBoxProduct,
   chartBoxRevenue,
   chartBoxUser,
@@ -48,10 +48,9 @@ const Home = () => {
       const ordersCount = await getOrdersCount.mutateAsync(query);
       const orders = await getOrders.mutateAsync(query.userId);
       const products = await getProducts.mutateAsync(query.userId);
-      chartBoxUser.number = clientsCount.clientsCountLastSeven.reduce((accumulator, currentValue) => {return accumulator + currentValue})
-      chartBoxProduct.number = productsCount.productsCountLastSeven.reduce((accumulator, currentValue) => {return accumulator + currentValue})
-      chartBoxRevenue.number = ordersCount.ordersCountLastSeven.reduce((accumulator, currentValue) => {return accumulator + currentValue})
-
+      chartBoxUser.number = clientsCount.clientsCountLastSeven.reduce((accumulator: number, currentValue: number) => accumulator + currentValue, 0);
+      chartBoxProduct.number = productsCount.productsCountLastSeven.reduce((accumulator: number, currentValue: number) => accumulator + currentValue, 0);
+      chartBoxRevenue.number = ordersCount.ordersCountLastSeven.reduce((accumulator: number, currentValue: number) => accumulator + currentValue, 0);      
       chartBoxUser.chartData.forEach((item, index)=>{
         item.name = clientsCount.clientsCountTimelineLastSeven[index];
         item.users = clientsCount.clientsCountLastSeven[index];
@@ -74,9 +73,9 @@ const Home = () => {
         item.products = productsCount.productsCountLastSeven[index];
         item.revenue = ordersCount.ordersCountLastSeven[index];
       })
-      products.forEach((item)=>{
-        InventoryProducts.push({name: item.pname, value: item.price, color: "#0088FE"})
-      })
+      products.forEach((item: {name: string, value: string, color: string}) => {
+        InventoryProducts.push({ name: item.pname, value: item.price, color: "#0088FE" });
+      });
       topDealUsers.forEach((item,index)=>{
         item.amount = orders[index].totalAmount;
         item.username = orders[index].bname;

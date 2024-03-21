@@ -62,12 +62,12 @@ const AddOrderItem = ({ product, orderItems, setOrderItems }: Props) => {
         setOrderItems(updateOrder);
     }
     return (
-        <ListItem ripple={false}>
-            <ListItemPrefix>
-                <Avatar variant="circular" alt="candice" src={product?.imageURL || "https://docs.material-tailwind.com/img/face-1.jpg"} />
+        <ListItem ripple={false} placeholder="">
+            <ListItemPrefix placeholder="">
+                <Avatar variant="circular" alt="candice" src={product?.imageURL || "https://docs.material-tailwind.com/img/face-1.jpg"} placeholder=""/>
             </ListItemPrefix>
             <div className="flex items-center">
-                <Typography variant="h6" color="blue-gray">
+                <Typography variant="h6" color="blue-gray" placeholder="">
                     {product?.pname || "something goes here"}
                 </Typography>
                 <CustomCounter value={value} setValue={setvalue}/>

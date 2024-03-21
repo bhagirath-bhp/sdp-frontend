@@ -36,10 +36,10 @@ export function SearchItem({ product, orderItems, setOrderItems }: Props) {
   };
 
   return (
-    <ListItem ripple={false} className="py-1 pr-1 pl-4">
+    <ListItem ripple={false} className="py-1 pr-1 pl-4" placeholder="">
       {product.pname}
-      <ListItemSuffix>
-        <IconButton variant="filled" color="black" onClick={handleAddProduct}>
+      <ListItemSuffix placeholder="">
+        <IconButton variant="filled" color="black" onClick={handleAddProduct} placeholder="">
           <IoIosAdd />
         </IconButton>
       </ListItemSuffix>

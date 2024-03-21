@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { Button, IconButton } from '@material-tailwind/react';
 // import { ArrowRightIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
 
-export function DefaultPagination({ totalPages, currentPage, onPageChange, visiblePages = 5 }) {
+export function DefaultPagination(props: { totalPages: number, currentPage: number, onPageChange: Function, visiblePages: number | 5 }) {
+  const {totalPages, currentPage, onPageChange, visiblePages} = props;
   const [active, setActive] = useState(currentPage);
 
   const next = () => {
@@ -32,6 +33,7 @@ export function DefaultPagination({ totalPages, currentPage, onPageChange, visib
           className='text-sm'
           color="gray"
           onClick={() => handlePageClick(i)}
+          placeholder=""
         >
           {i}
         </IconButton>
@@ -41,7 +43,7 @@ export function DefaultPagination({ totalPages, currentPage, onPageChange, visib
     return pageItems;
   };
 
-  const handlePageClick = (page) => {
+  const handlePageClick = (page: number | any) => {
     setActive(page);
     onPageChange(page);
   };
@@ -53,6 +55,7 @@ export function DefaultPagination({ totalPages, currentPage, onPageChange, visib
         className="flex items-center smMobile:gap-1 tablet:gap-2 text-sm"
         onClick={prev}
         disabled={active === 1}
+        placeholder=""
       >
         {/* <ArrowLeftIcon strokeWidth={2} className="h-4 w-4" /> */}
          Previous
@@ -63,6 +66,7 @@ export function DefaultPagination({ totalPages, currentPage, onPageChange, visib
         className="flex items-center gap-2 text-sm"
         onClick={next}
         disabled={active === totalPages}
+        placeholder=""
       >
         Next 
         {/* <ArrowRightIcon strokeWidth={2} className="h-4 w-4" /> */}

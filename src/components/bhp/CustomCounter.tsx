@@ -3,11 +3,11 @@ const CustomCounter: React.FC<{value: number, setValue:Function}> = ({value, set
 //   const [value, setValue] = useState<number>(0);
 
   const decrement = () => {
-    setValue(prevValue => prevValue - 1);
+    setValue((prevValue: number | any)  => prevValue - 1);
   };
 
   const increment = () => {
-    setValue(prevValue => prevValue + 1);
+    setValue((prevValue: number | any) => prevValue + 1);
   };
 
   return (
