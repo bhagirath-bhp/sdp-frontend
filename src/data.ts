@@ -129,43 +129,43 @@ export const menu = [
 ];
 
 export const topDealUsers = [
-  {
-    id: 1,
-    // img: "https://images.pexels.com/photos/8405873/pexels-photo-8405873.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-    username: "Harsh Mehta",
-    amount: "3668",
-  },
-  {
-    id: 2,
-    // img: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    username: "Kirtan Patel",
-    amount: "3256",
-  },
-  {
-    id: 3,
-    // img: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    username: "Dipen Thakkar",
-    amount: "2998",
-  },
-  {
-    id: 4,
-    // img: "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    username: "Jay Shah",
-    amount: "2512",
-  },
-  {
-    id: 5,
-    // img: "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    username: "Jenil sharma",
-    amount: "2134",
-  },
-  {
-    id: 6,
-    // img: "https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    username: "Umang Mcgill",
-    email: "augusta@gmail.com",
-    amount: "1932",
-  },
+  // {
+  //   id: 1,
+  //   // img: "https://images.pexels.com/photos/8405873/pexels-photo-8405873.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
+  //   username: "Harsh Mehta",
+  //   amount: "3668",
+  // },
+  // {
+  //   id: 2,
+  //   // img: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  //   username: "Kirtan Patel",
+  //   amount: "3256",
+  // },
+  // {
+  //   id: 3,
+  //   // img: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  //   username: "Dipen Thakkar",
+  //   amount: "2998",
+  // },
+  // {
+  //   id: 4,
+  //   // img: "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  //   username: "Jay Shah",
+  //   amount: "2512",
+  // },
+  // {
+  //   id: 5,
+  //   // img: "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  //   username: "Jenil sharma",
+  //   amount: "2134",
+  // },
+  // {
+  //   id: 6,
+  //   // img: "https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  //   username: "Umang Mcgill",
+  //   email: "augusta@gmail.com",
+  //   amount: "1932",
+  // },
 ];
 
 
@@ -173,9 +173,9 @@ export const chartBoxUser = {
   color: "#8884d8",
   icon: "/userIcon.svg",
   title: "Total Clients",
-  number: "15",
+  // number: "15",
   dataKey: "users",
-  percentage: 45,
+  // percentage: 45,
   chartData: [
     // { name: "Sun", users: 400 },
     // { name: "Mon", users: 600 },
@@ -191,9 +191,9 @@ export const chartBoxProduct = {
   color: "skyblue",
   icon: "/productIcon.svg",
   title: "Total Products",
-  number: "10",
+  // number: "10",
   dataKey: "products",
-  percentage: 21,
+  // percentage: 21,
   chartData: [
     // { name: "Sun", products: 400 },
     // { name: "Mon", products: 600 },
@@ -208,9 +208,9 @@ export const chartBoxRevenue = {
   color: "teal",
   icon: "/revenueIcon.svg",
   title: "Total Revenue",
-  number: "₹564320",
+  // number: "₹564320",
   dataKey: "revenue",
-  percentage: 12,
+  // percentage: 12,
   chartData: [
     // { name: "Jan", revenue: 400 },
     // { name: "Feb", revenue: 600 },
@@ -225,9 +225,9 @@ export const chartBoxConversion = {
   color: "gold",
   icon: "/conversionIcon.svg",
   title: "Total Profit",
-  number: "₹120000",
+  // number: "₹120000",
   dataKey: "ratio",
-  percentage: 12,
+  // percentage: 12,
   chartData: [
     // { name: "Jan", ratio: 400 },
     // { name: "Feb", ratio: 600 },
