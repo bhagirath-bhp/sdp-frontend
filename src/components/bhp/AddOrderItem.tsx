@@ -86,7 +86,7 @@ const AddOrderItem = ({ product }: Props) => {
                 <Typography variant="h6" color="blue-gray" placeholder="">
                     {product?.pname || "something goes here"}
                 </Typography>
-                <CustomCounter value={value} setValue={setvalue}/>
+                {/* <CustomCounter value={value} setValue={setvalue}/> */}
             </div>
             <ListItemSuffix placeholder="hii">
                 <IconButton variant="text" color="blue-gray" placeholder="hii" onClick={deleteProduct}>
