@@ -13,7 +13,6 @@ type Props = {
 };
 
 const ChartBox = (props: Props) => {
-  console.log(props)
   return (
     <div className="chartBox">
       <div className="boxInfo">

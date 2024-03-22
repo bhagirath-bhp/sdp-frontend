@@ -2,19 +2,31 @@
 
 .single {
   display: flex;
+  flex-direction: column;
   overflow: hidden;
   box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.2);
   border-radius: 20px;
-  
-  @include xl{
+  position: relative;
+
+  @include xl {
     flex-direction: column;
     gap: 50px;
   }
-  
+
+  .btn-container {
+    display: flex;
+    justify-content: end;
+    margin: 1rem;
+    // .edit-btn{
+    //   position: absolute;
+    //   right: 50px;
+    // }
+  }
   .view {
+
     flex: 1;
-    
-    .cover-container{
+
+    .cover-container {
       max-height: 10rem;
       overflow: hidden;
       display: flex;
@@ -27,8 +39,19 @@
       justify-content: center;
       align-items: center;
       position: relative;
-      
-      .profile-image-container{
+
+      .edit-input-container{
+        display: flex;
+        justify-content: space-between;
+
+        .edit-input-field{
+          border: 1px solid #A1A1A1;
+          padding: 0.5rem;
+          border-radius: 20px;
+        }
+      }
+
+      .profile-image-container {
         border: 10px solid #fff;
         height: 10rem;
         width: 10rem;
@@ -37,7 +60,6 @@
         background-size: cover;
         position: absolute;
         top: 0;
-        
       }
       .topInfo {
         display: flex;
@@ -76,7 +98,7 @@
       border: 0.5px solid gray;
       margin: 20px 0px;
 
-      @include md{
+      @include md {
         display: none;
       }
     }

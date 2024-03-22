@@ -13,7 +13,7 @@ const UserBadge = () => {
         <div className="flex items-center md:order-2 flex-col relative text-black">
             <Button type="button" placeholder="" color="white" className="border-[1px] border-[#A1A1A1] flex items-center gap-[1rem] text-sm focus:ring-1 focus:ring-golden" id="user-menu-button" onClick={() => { (userCick) ? setUserClick(false) : setUserClick(true) }}>
                 <span className="sr-only">Open user menu</span>
-                <span>{user.name}</span>
+                <span>{user.companyName}</span>
                 <img className="w-8 h-8 rounded-full" src={user.profileURL} alt="user photo" />
             </Button>
             <div className={`z-50 absolute border-[1px] border-[#000000] top-[3rem] right-[0.02rem] ${userCick ? "max-h-[20rem] opacity-100" : "max-h-0 opacity-0"} transition-height duration-[700ms] ease-in-out overflow-hidden my-4 text-base list-none bg-[#ffffff96] rounded-lg backdrop-blur-md`}>

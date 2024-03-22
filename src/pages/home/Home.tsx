@@ -68,8 +68,8 @@ const Home = () => {
           accumulator + currentValue,
         0
       );
-      chartBoxUser.chartData.forEach((item, index)=>{
-      // clientsCount.clientsCountTimelineLastSeven.forEach((item, index) => {
+      chartBoxUser.chartData.forEach((item, index) => {
+        // clientsCount.clientsCountTimelineLastSeven.forEach((item, index) => {
         // const itemExists = chartBoxUser.chartData.some(
         //   (user) => user.id === user.id
         // );
@@ -123,7 +123,7 @@ const Home = () => {
         //   });
         // }
         item.name = ordersCount.ordersCountTimelineLastSeven[index];
-        item.sales = ordersCount.ordersCountLastSeven[index]
+        item.sales = ordersCount.ordersCountLastSeven[index];
       });
       BigChartBoxData.forEach((item, index) => {
         // const itemExists = chartBoxProduct.chartData.some(
@@ -157,10 +157,13 @@ const Home = () => {
         }
       });
       topDealUsers.forEach((item, index) => {
-        item.amount = orders[index]?.totalAmount;
+        item.amount = parseInt(orders[index]?.totalAmount);
         item.username = orders[index]?.bname;
       });
-      topDealUsers.sort((a, b) => b.amount - a.amount);
+      // Assuming orders is an array of objects
+      orders.sort((a, b) => a.totalAmount - b.totalAmount);
+
+      console.log(orders);
     };
     fetchClientsCount();
   }, []);

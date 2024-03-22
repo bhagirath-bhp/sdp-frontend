@@ -43,11 +43,22 @@ const AddOrderPage = () => {
     setSearchTimeout(newTimeout as NodeJS.Timeout); // Assert newTimeout as NodeJS.Timeout
 };
 
-  
+  useEffect(()=>{
+    console.log("                                                         ");
+    console.log("---------------------------------------------------------");
+    console.log("Order Items: ", orderItems)
+    console.log("Search Items: ", searchItems)
+    console.log("Order Items Set: ", orderItemset)
+    console.log("Search ProductSet: ", searchProductSet)
+    console.log("---------------------------------------------------------");
+    console.log("                                                         ");
+  }, [orderItems])
   useEffect(() => {
     const temp = searchItems.map((item: { pname: string, _id: string, price: number, imageURL: string }) => {
+      console.log(orderItems)
       return (
         <SearchItem
+          key={item._id}
           product={item}
           orderItems={orderItems}
           setOrderItems={setOrderItems}
@@ -58,14 +69,18 @@ const AddOrderPage = () => {
   }, [searchItems, orderItems]);
 
   useEffect(() => {
-    const temp = orderItems.map((item) => (
-      <AddOrderItem
-        product={item}
-        orderItems={orderItems}
-        setOrderItems={setOrderItems}
-      />
-    ));
-    setOrderItemsset(temp);
+    setTimeout(() => {
+      const temp = orderItems.map((item: {pid: string, pname: string, imageURL: string, price: number, quantity: number}) => (
+        <AddOrderItem
+          key={item.pid}
+          product={item}
+          orderItems={orderItems}
+          setOrderItems={setOrderItems}
+        />
+      ));
+      console.log(temp)
+      setOrderItemsset(temp);
+    }, 0);
   }, [orderItems]);
 
   const handleSubmit = async (e: any) => {

@@ -50,7 +50,7 @@ const AddOrderItem = ({ product, orderItems, setOrderItems }: Props) => {
     const [value, setvalue] = useState(product?.quantity);
     useEffect(()=>{
         const updatedOrder = orderItems.map((item)=>{
-            if(item.pid === product?.pid){
+            if(item?.pid === product?.pid){
                 return {...item, quantity: value}
             }
         })
@@ -58,7 +58,7 @@ const AddOrderItem = ({ product, orderItems, setOrderItems }: Props) => {
     }, [value])
 
     const deleteProduct = () => {
-        const updateOrder = orderItems.filter(item => item.pid != product.pid)
+        const updateOrder = orderItems.filter(item => item?.pid != product?.pid)
         setOrderItems(updateOrder);
     }
     return (

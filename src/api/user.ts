@@ -24,4 +24,17 @@ export const useSignInMutation = () => {
     return response.json();
   });
 };
+export const useUpdateProfileMutation = () => {
+  return useMutation(async (formData: any) => {
+    console.log(formData);
+    const response = await fetch(`${uri}/user/profile`, {
+      method: "PUT",
+      body: formData,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    });
+    return response.json();
+  });
+};
 

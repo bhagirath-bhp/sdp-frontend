@@ -4,7 +4,13 @@ import AnyForm from "../../components/bhp/AnyForm";
 const SignUpPage = () => {
   const fields = [
     {
-      label: "Name",
+      label: "CompanyName",
+      type: "text",
+      className: "",
+      value: "",
+    },
+    {
+      label: "OwnerName",
       type: "text",
       className: "",
       value: "",
@@ -14,7 +20,18 @@ const SignUpPage = () => {
       type: "email",
       className: "",
       value: "",
-      onChange: (value: string) => console.log("Email:", value),
+    },
+    {
+      label: "Phone",
+      type: "number",
+      className: "",
+      value: "",
+    },
+    {
+      label: "Address",
+      type: "text",
+      className: "",
+      value: "",
     },
     {
       label: "Image",

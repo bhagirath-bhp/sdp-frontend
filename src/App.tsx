@@ -28,7 +28,7 @@ const queryClient = new QueryClient();
 function App() {
   const Layout = () => {
     const location = useLocation();
-    const isMenuHidden = (location.pathname === "/");
+    const isMenuHidden = (location.pathname === "/") || (location.pathname === "/signup") || (location.pathname === "/signin");
     return (
       <RecoilRoot>
         <div className="main relative">

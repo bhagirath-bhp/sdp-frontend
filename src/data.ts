@@ -120,7 +120,7 @@ export const menu = [
         onClickFn: () => {
           Cookies.remove("user");
           Cookies.remove("token");
-          window.location.reload();
+          window.location.replace("/signup");
         },
         icon: "close.png",
       },
@@ -135,37 +135,37 @@ export const topDealUsers = [
     username: "",
     amount: 0,
   },
-  // {
-  //   id: 2,
-  //   // img: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1600",
-  //   username: "Kirtan Patel",
-  //   amount: "3256",
-  // },
-  // {
-  //   id: 3,
-  //   // img: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=1600",
-  //   username: "Dipen Thakkar",
-  //   amount: "2998",
-  // },
-  // {
-  //   id: 4,
-  //   // img: "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=1600",
-  //   username: "Jay Shah",
-  //   amount: "2512",
-  // },
-  // {
-  //   id: 5,
-  //   // img: "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1600",
-  //   username: "Jenil sharma",
-  //   amount: "2134",
-  // },
-  // {
-  //   id: 6,
-  //   // img: "https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=1600",
-  //   username: "Umang Mcgill",
-  //   email: "augusta@gmail.com",
-  //   amount: "1932",
-  // },
+  {
+    id: 2,
+    // img: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    username: "Kirtan Patel",
+    amount: "3256",
+  },
+  {
+    id: 3,
+    // img: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    username: "",
+    amount: "",
+  },
+  {
+    id: 4,
+    // img: "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    username: "",
+    amount: "",
+  },
+  {
+    id: 5,
+    // img: "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    username: "",
+    amount: "",
+  },
+  {
+    id: 6,
+    // img: "https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    username: "",
+    email: "",
+    amount: "",
+  },
 ];
 
 

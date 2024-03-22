@@ -23,6 +23,7 @@ interface Props {
 
 export function SearchItem({ product, orderItems, setOrderItems }: Props) {
   const handleAddProduct = () => {
+    console.log(product)
     setOrderItems([
       ...orderItems,
       {
