@@ -8,6 +8,8 @@ import {
 } from "@material-tailwind/react";
 import CustomCounter from "./CustomCounter"
 import { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
+import { orderState } from "../state/recoilState";
 
 function TrashIcon() {
     return (
@@ -42,24 +44,38 @@ interface Product {
   
   interface Props {
     product: Product;
-    orderItems: OrderItem[];
-    setOrderItems: Function;
+    // orderItems: OrderItem[];
+    // setOrderItems: Function;
   }
-const AddOrderItem = ({ product, orderItems, setOrderItems }: Props) => {
+// const AddOrderItem = ({ product, orderItems, setOrderItems }: Props) => {
+const AddOrderItem = ({ product }: Props) => {
     // console.log(product)
     const [value, setvalue] = useState(product?.quantity);
-    useEffect(()=>{
-        const updatedOrder = orderItems.map((item)=>{
-            if(item?.pid === product?.pid){
-                return {...item, quantity: value}
-            }
-        })
-        setOrderItems(updatedOrder)
-    }, [value])
+    const [orderItems, setOrderItems] = useRecoilState(orderState)
+    
+
+
+    // ===========================
+    // Uncomment this for quantity (Note: it causes error while adding order)
+    // ===========================
+
+    // useEffect(()=>{
+    //     const updatedOrder = orderItems?.map((item)=>{
+    //         // if(item?.pid === product?.pid){
+    //         if(item && (item?.pid === product?.pid)){
+    //             return {...item, quantity: value}
+    //         }
+    //     })
+    //     setOrderItems(updatedOrder)
+    // }, [value])
 
     const deleteProduct = () => {
-        const updateOrder = orderItems.filter(item => item?.pid != product?.pid)
+        const updateOrder = orderItems?.filter(item => item?.pid != product?.pid)
         setOrderItems(updateOrder);
+    }
+    
+    if(!orderItems){
+        return null;
     }
     return (
         <ListItem ripple={false} placeholder="">

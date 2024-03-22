@@ -5,8 +5,8 @@ import AddOrderItem from "../../components/bhp/AddOrderItem";
 import { searchMutation } from "../../api/products";
 import { addOrderMutation } from "../../api/order";
 import { ToastContainer, toast } from "react-toastify";
-import { userState } from "../../components/state/recoilState";
-import { useRecoilValue } from "recoil";
+import { orderState, userState } from "../../components/state/recoilState";
+import { useRecoilState, useRecoilValue } from "recoil";
 import Handler from "../../components/state/handler";
 import { useNavigate } from "react-router-dom";
 
@@ -16,7 +16,8 @@ const AddOrderPage = () => {
   const [searchTimeout, setSearchTimeout] = useState<NodeJS.Timeout | undefined>(undefined);
   const [searchItems, setSearchItems] = useState([]);
   const [searchProductSet, setSearchProductSet] = useState<JSX.Element[]>([]);
-  const [orderItems, setOrderItems] = useState([]);
+  // const [orderItems, setOrderItems] = useState([]);
+  const [orderItems, setOrderItems] = useRecoilState(orderState);
   const [orderItemset, setOrderItemsset] = useState<JSX.Element[]>([]);
   const search = searchMutation();
   const addOrder = addOrderMutation();
@@ -31,7 +32,7 @@ const AddOrderPage = () => {
     setSearchText(e.target.value);
     let newTimeout: NodeJS.Timeout | undefined = undefined; // Initialize newTimeout with undefined
     clearTimeout(searchTimeout);
-    if (e.target.value.length > 2) {
+    if (e.target.value.length > 1) {
         newTimeout = setTimeout(async () => {
             const query = { userId: user.userId, name: searchText };
             const response = await search.mutateAsync(query);
@@ -52,7 +53,8 @@ const AddOrderPage = () => {
     console.log("Search ProductSet: ", searchProductSet)
     console.log("---------------------------------------------------------");
     console.log("                                                         ");
-  }, [orderItems])
+  }, [orderItems]);
+
   useEffect(() => {
     const temp = searchItems.map((item: { pname: string, _id: string, price: number, imageURL: string }) => {
       console.log(orderItems)
@@ -60,8 +62,8 @@ const AddOrderPage = () => {
         <SearchItem
           key={item._id}
           product={item}
-          orderItems={orderItems}
-          setOrderItems={setOrderItems}
+          // orderItems={orderItems}
+          // setOrderItems={setOrderItems}
         />
       );
     });
@@ -70,12 +72,13 @@ const AddOrderPage = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      const temp = orderItems.map((item: {pid: string, pname: string, imageURL: string, price: number, quantity: number}) => (
+
+      const temp = orderItems?.map((item: {pid: string, pname: string, imageURL: string, price: number, quantity: number}) => (
         <AddOrderItem
-          key={item.pid}
+          key={item?.pid}
           product={item}
-          orderItems={orderItems}
-          setOrderItems={setOrderItems}
+          // orderItems={orderItems}
+          // setOrderItems={setOrderItems}
         />
       ));
       console.log(temp)

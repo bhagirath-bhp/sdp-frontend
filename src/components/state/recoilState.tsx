@@ -20,3 +20,16 @@ export const userState = atom({
     localStorageEffect('userState')
   ]
 });
+
+interface Order {pid: string, pname: string, imageURL: string, price: number, quantity: number}
+export const orderState = atom<Order[] | undefined>({
+  key: 'orderState',
+  default: undefined
+  // default: [{
+  //   imageURL: "",
+  //   pid: "",
+  //   pname: "",
+  //   price: 0,
+  //   quantity: 0,
+  // }]
+});
