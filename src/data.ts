@@ -138,33 +138,33 @@ export const topDealUsers = [
   {
     id: 2,
     // img: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    username: "Kirtan Patel",
-    amount: "3256",
+    username: " ",
+    amount: 0,
   },
   {
     id: 3,
     // img: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=1600",
     username: "",
-    amount: "",
+    amount: 0,
   },
   {
     id: 4,
     // img: "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=1600",
     username: "",
-    amount: "",
+    amount: 0,
   },
   {
     id: 5,
     // img: "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1600",
     username: "",
-    amount: "",
+    amount: 0,
   },
   {
     id: 6,
     // img: "https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=1600",
     username: "",
-    email: "",
-    amount: "",
+    // email: "",
+    amount: 0,
   },
 ];
 

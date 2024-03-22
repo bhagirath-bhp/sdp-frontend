@@ -18,7 +18,6 @@ import { toUrlEncoded } from "../../utils";
 import { ToastContainer, toast } from "react-toastify";
 import Cookies from "js-cookie";
 
-
 type Props = {
   id: number;
   img?: string;
@@ -38,11 +37,11 @@ const Single = (props: Props) => {
   const setGlobalUser = useSetRecoilState(userState);
   const [user, setUser] = useState({
     userId: currentUser.userId,
-    companyName: currentUser.companyName, 
-    ownerName: currentUser.ownerName, 
-    email: currentUser.email, 
-    phone: currentUser.phone, 
-    address: currentUser.address, 
+    companyName: currentUser.companyName,
+    ownerName: currentUser.ownerName,
+    email: currentUser.email,
+    phone: currentUser.phone,
+    address: currentUser.address,
   });
 
   const handleEditing = () => {
@@ -50,9 +49,9 @@ const Single = (props: Props) => {
   };
 
   const handleChange = (field: string, value: string) => {
-    setUser((prev) => ({...prev, [field]: value})) 
+    setUser((prev) => ({ ...prev, [field]: value }));
     console.log(user);
-  }
+  };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -79,7 +78,7 @@ const Single = (props: Props) => {
         theme: "light",
       });
     }
-  }
+  };
   return (
     <>
       <div className="single">
@@ -88,84 +87,99 @@ const Single = (props: Props) => {
             <div className="cover-container">
               <img src={currentUser.profileURL} />
             </div>
-            <form className="details" onSubmit={handleSubmit}>
+            <form
+              className="details flex justify-center"
+              onSubmit={handleSubmit}
+            >
               <div
                 className="profile-image-container"
                 style={{ backgroundImage: `url(${currentUser.profileURL})` }}
               >
                 {/* <img src={user.profileURL} /> */}
               </div>
-              <div className="item edit-input-container">
-                <span className="itemTitle">Company Name: </span>
-                <input
-                  type="text"
-                  className="itemValue edit-input-field"
-                  placeholder={user.companyName}
-                  disabled={!isEditing}
-                  onChange={(e)=>{handleChange("companyName", e.target.value)}}
-                />
-              </div>
-              <div className="item edit-input-container">
-                <span className="itemTitle">Owner's Name: </span>
-                <input
-                  type="text"
-                  className="itemValue edit-input-field"
-                  placeholder={user.ownerName}
-                  disabled={!isEditing}
-                  onChange={(e)=>{handleChange("ownerName", e.target.value)}}
-                />
-              </div>
-              <div className="item edit-input-container">
-                <span className="itemTitle">Contact No: </span>
-                <input
-                  type="text"
-                  className="itemValue edit-input-field"
-                  placeholder={user.phone}
-                  disabled={!isEditing}
-                  onChange={(e)=>{handleChange("phone", e.target.value)}}
-                />
-              </div>
-              <div className="item edit-input-container">
-                <span className="itemTitle">Email: </span>
-                <input
-                  type="text"
-                  className="itemValue edit-input-field"
-                  placeholder={user.email}
-                  disabled={!isEditing}
-                  onChange={(e)=>{handleChange("email", e.target.value)}}
-                />
-              </div>
-              <div className="item edit-input-container">
-                <span className="itemTitle">Address: </span>
-                <input
-                  type="text"
-                  className="itemValue edit-input-field"
-                  placeholder={user.address}
-                  disabled={!isEditing}
-                  onChange={(e)=>{handleChange("address", e.target.value)}}
-                />
-              </div>
-              {/* <div className="item">
+              <div>
+                <div className="item edit-input-container">
+                  <span className="itemTitle">Company Name: </span>
+                  <input
+                    type="text"
+                    className="itemValue edit-input-field"
+                    placeholder={user.companyName}
+                    disabled={!isEditing}
+                    onChange={(e) => {
+                      handleChange("companyName", e.target.value);
+                    }}
+                  />
+                </div>
+                <div className="item edit-input-container">
+                  <span className="itemTitle">Owner's Name: </span>
+                  <input
+                    type="text"
+                    className="itemValue edit-input-field"
+                    placeholder={user.ownerName}
+                    disabled={!isEditing}
+                    onChange={(e) => {
+                      handleChange("ownerName", e.target.value);
+                    }}
+                  />
+                </div>
+                <div className="item edit-input-container">
+                  <span className="itemTitle">Contact No: </span>
+                  <input
+                    type="text"
+                    className="itemValue edit-input-field"
+                    placeholder={user.phone}
+                    disabled={!isEditing}
+                    onChange={(e) => {
+                      handleChange("phone", e.target.value);
+                    }}
+                  />
+                </div>
+                <div className="item edit-input-container">
+                  <span className="itemTitle">Email: </span>
+                  <input
+                    type="text"
+                    className="itemValue edit-input-field"
+                    placeholder={user.email}
+                    disabled={!isEditing}
+                    onChange={(e) => {
+                      handleChange("email", e.target.value);
+                    }}
+                  />
+                </div>
+                <div className="item edit-input-container">
+                  <span className="itemTitle">Address: </span>
+                  <input
+                    type="text"
+                    className="itemValue edit-input-field"
+                    placeholder={user.address}
+                    disabled={!isEditing}
+                    onChange={(e) => {
+                      handleChange("address", e.target.value);
+                    }}
+                  />
+                </div>
+                {/* <div className="item">
                 <span className="itemTitle">Status: </span>
                 <span className="itemValue">
-                  {" "}
-                  {user.status || "Not verified"}
+                {" "}
+                {user.status || "Not verified"}
                 </span>
               </div> */}
-              <Button
-                className="submit-btn"
-                color="green"
-                placeholder=""
-                disabled={!isEditing}
-                type="submit"
-              >
-                Save
-              </Button>
+                <Button
+                  className="submit-btn"
+                  color="green"
+                  placeholder=""
+                  disabled={!isEditing}
+                  type="submit"
+                >
+                  Save
+                </Button>
+              </div>
             </form>
           </div>
           {/* <div className="info">
             <div className="topInfo">
-              {props.img && <img src={props.img} alt="" />}
+            {props.img && <img src={props.img} alt="" />}
               <h1>{props.title}</h1>
               <button>Update</button>
             </div>

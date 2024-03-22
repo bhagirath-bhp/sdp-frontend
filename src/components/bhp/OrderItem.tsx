@@ -120,11 +120,11 @@ const OrderItem = (props: { order: any; index: any }) => {
                   <div className="w-full flex justify-evenly gap-[2rem] px-[1rem] py-[1rem] my-[1rem] text-[1rem] font-bold border-y-2 border-[#A1A1A1]">
                     <div></div>
                     <div></div>
-                    <div className="total-quantity text-center">
+                    {/* <div className="total-quantity text-center">
                       <span>
                         Quanity: <span>{orderItems.length}</span>
                       </span>
-                    </div>
+                    </div> */}
                     <div className="total-amount text-center">
                       <span>
                         Amount: <span>{order.totalAmount}</span>
@@ -132,7 +132,7 @@ const OrderItem = (props: { order: any; index: any }) => {
                     </div>
                   </div>
                   <div className="my-[5rem]">
-                    <div className="my-[1rem] text-[1rem] font-bold">Thank You From</div>
+                    <div className="my-[1rem] text-[1rem] font-bold">Thank You</div>
                     <div className="my-[1rem] text-[1rem] font-bold">info@impeto.tech</div>
                     <div className="my-[1rem] text-[1rem] font-bold">+91 9023884687</div>
                   </div>

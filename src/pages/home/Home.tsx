@@ -156,12 +156,12 @@ const Home = () => {
           });
         }
       });
+      orders.sort((a, b) => a.totalAmount + b.totalAmount);
       topDealUsers.forEach((item, index) => {
-        item.amount = parseInt(orders[index]?.totalAmount);
+        item.amount = orders[index]?.totalAmount;
         item.username = orders[index]?.bname;
       });
       // Assuming orders is an array of objects
-      orders.sort((a, b) => a.totalAmount - b.totalAmount);
 
       console.log(orders);
     };

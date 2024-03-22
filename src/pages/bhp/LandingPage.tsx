@@ -93,22 +93,27 @@ function LandingPage() {
               </div>
               <div className="max-w-[515px] flex flex-col gap-8">
                 <span className="text-[17px] Light font-normal font-hindVadodara leading-[146.3%] tracking-wide text-center md:text-left">
-                  Lorem Ipsum has been the industry&apos;s standard dummy text
-                  ever since the 1500s, when an unknown printer took a galley of
-                  type and scrambled it to make a type specimen book.
+                  Impeto Technologies delivers end-to-end website solutions,
+                  covering design, e-commerce, digital marketing, and beyond.
+                  Our expertise ensures your website not only looks stunning but
+                  also drives results. Regardless of your business size, our
+                  commitment to quality remains unwavering. Count on us for
+                  effective solutions to elevate your business
                 </span>
                 <a
                   href="/dashboard"
                   className="self-center bg-[#331B3B] rounded-[10px] text-[17px] text-white uppercase font-hindVadodara md:self-start max-w-[207px] py-[22px] w-full flex justify-center items-center font-bold leading-[137.3%] tracking-wide"
-                >Get Started</a>
+                >
+                  Get Started
+                </a>
               </div>
             </div>
             <div>
-              <img
+              {/* <img
                 src={"/assets/dreamagency/home.png"}
                 alt="Home"
                 className="h-[362px] lg:h-full"
-              />
+              /> */}
             </div>
           </div>
         </div>
